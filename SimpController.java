@@ -46,7 +46,7 @@ public class SimpController {
 		}
 		
 	}
-	public static boolean isValidAngle(TextField in) { //Checks id the userinput is a double
+	public static boolean isValidAngle(TextField in) { //Checks id the userinput is an angle
 		try {
 			Double.parseDouble(in.getText());
 			if (Double.parseDouble(in.getText()) >= 0 && Double.parseDouble(in.getText()) <=90) {

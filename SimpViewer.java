@@ -24,13 +24,16 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
 public class SimpViewer extends Application {
+		
 	
+		TextField nValue, mValue, angle, velocity;
+		Label label1, angleText, velocityText;
 		Button button, button2;
 		Scene scene1, scene2;
 		Stage gameStage;
-		int m, n;
-		Double angleShoot, velocityShoot;
-		
+		VBox vbox, layout1;
+		Group group;
+		Canvas canvas;
 
 		public static void main(String[] args) {
 			launch(args);
@@ -40,82 +43,84 @@ public class SimpViewer extends Application {
 			
 			primaryStage.setTitle("Gorillas"); //stage
 			
-			TextField nValue = new TextField(); //textfield for width
-			TextField mValue = new TextField(); //textfield for height
-			
-			Label label1 = new Label("Enter width and height of the game below"); //description
-			
-			button = new Button();
-			button.setText("Continue to game"); //button for applying width and height
-			
+			widthAndHeightInterface();
 
 			button.setOnAction(e -> { //sets the dimensions of the game and checks if the values are valid
 				boolean b = SimpController.isInt(nValue);
 				boolean c = SimpController.isInt(mValue);
 				if (b && c == true) {
-					n = Integer.parseInt(nValue.getText());
-					m = Integer.parseInt(mValue.getText());
-					
-					Group group = new Group(); //layout of game
-					
-					Canvas canvas = new Canvas(n,m);
-					
-					//layout2.getChildren().add(button3);
-					VBox vbox = new VBox(10);
-					//textfields for shooting specifications and the field's size
-					TextField angle = new TextField();
-					angle.setPrefWidth(25);
-					TextField velocity = new TextField();
-					velocity.setPrefWidth(25);
-					
-					//"Fire!!" button
-					button2 = new Button();
-					button2.setText("Fire!!");
-					
+					angleAndVelocityInterface();
 					//assigns value to angleShoot and velocityShoot if the entered values are valid
 					button2.setOnAction(event -> { 
 						boolean doubleCheck = SimpController.isValidAngle(angle);
 						boolean doubleCheck2 = SimpController.isDouble(velocity);
 						
 						if(doubleCheck && doubleCheck2) {
-							angleShoot = Double.parseDouble(angle.getText());
-							velocityShoot = Double.parseDouble(velocity.getText());
+							SimpModel.angleShoot = Double.parseDouble(angle.getText());
+							SimpModel.velocityShoot = Double.parseDouble(velocity.getText());
 							
 						}
 					});
-					
-					//air with the borders
-					vbox.setPadding(new Insets(20,20,20,20));
-					
-					Label angleText = new Label("Please enter angle to shoot with: ");
-					Label velocityText = new Label("Please enter velocity to shoot with: ");
-					
-					vbox.getChildren().addAll(angleText, angle, velocityText, velocity, button2);
-
-					
-					group.getChildren().add(canvas);
-					group.getChildren().add(vbox);
-					
-					scene2 = new Scene(group, n, m); //game scene made with the layout predefined
 					primaryStage.setScene(scene2); //sets game scene
-					
-					
-					
-
 				}
 			});
 			
-			VBox layout1 = new VBox(10); //layout of initialization scene 
-			layout1.setPadding(new Insets(20, 20, 20, 20)); //space from edges of the scene
-			layout1.getChildren().addAll(label1,  nValue, mValue, button); //adds button and textfield
-			
-			scene1 = new Scene(layout1, 400, 180); //initialization scene with the predefined layout
-			
+
 			
 			
 			
 			primaryStage.setScene(scene1);
 			primaryStage.show();
+		}
+		
+		public void widthAndHeightInterface() {
+			nValue = new TextField(); //textfield for width
+			mValue = new TextField(); //textfield for height
+			label1 = new Label("Enter width and height of the game below"); //description
+			button = new Button();
+			button.setText("Continue to game"); //button for applying width and height
+			
+			layout1 = new VBox(10); //layout of initialization scene 
+			layout1.setPadding(new Insets(20, 20, 20, 20)); //space from edges of the scene
+			layout1.getChildren().addAll(label1,  nValue, mValue, button); //adds button and textfield
+			
+			scene1 = new Scene(layout1, 400, 180); //initialization scene with the predefined layout
+		}
+		
+		
+		public void angleAndVelocityInterface() {
+			SimpModel.n = Integer.parseInt(nValue.getText());
+			SimpModel.m = Integer.parseInt(mValue.getText());
+			
+			group = new Group(); //layout of game
+			
+			canvas = new Canvas(SimpModel.n,SimpModel.m);
+			
+			vbox = new VBox(10);
+			//textfields for shooting specifications and the field's size
+			angle = new TextField();
+			angle.setPrefWidth(25);
+			velocity = new TextField();
+			velocity.setPrefWidth(25);
+			
+			//"Fire!!" button
+			button2 = new Button();
+			button2.setText("Fire!!");
+			
+			//air with the borders
+			vbox.setPadding(new Insets(20,20,20,20));
+			
+			angleText = new Label("Please enter angle to shoot with: ");
+			velocityText = new Label("Please enter velocity to shoot with: ");
+			
+			vbox.getChildren().addAll(angleText, angle, velocityText, velocity, button2);
+
+			
+			group.getChildren().add(canvas);
+			group.getChildren().add(vbox);
+			
+			scene2 = new Scene(group); //game scene made with the layout predefined
+			
 		}
 		
 
