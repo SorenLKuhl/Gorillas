@@ -20,14 +20,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 
 public class SimpViewer extends Application {
 	
-		Button button, button3;
+		Button button, button2;
 		Scene scene1, scene2;
 		Stage gameStage;
-		int m;
-		int n;
+		int m, n;
+		Double angleShoot, velocityShoot;
 		
 
 		public static void main(String[] args) {
@@ -54,10 +56,51 @@ public class SimpViewer extends Application {
 					n = Integer.parseInt(nValue.getText());
 					m = Integer.parseInt(mValue.getText());
 					
-					StackPane layout2 = new StackPane(); //layout of game
-					layout2.getChildren().add(button3);
-					scene2 = new Scene(layout2, n, m); //game scene made with the layout predefined
+					Group group = new Group(); //layout of game
+					
+					Canvas canvas = new Canvas(n,m);
+					
+					//layout2.getChildren().add(button3);
+					VBox vbox = new VBox(10);
+					//textfields for shooting specifications and the field's size
+					TextField angle = new TextField();
+					angle.setPrefWidth(25);
+					TextField velocity = new TextField();
+					velocity.setPrefWidth(25);
+					
+					//"Fire!!" button
+					button2 = new Button();
+					button2.setText("Fire!!");
+					
+					//assigns value to angleShoot and velocityShoot if the entered values are valid
+					button2.setOnAction(event -> { 
+						boolean doubleCheck = SimpController.isValidAngle(angle);
+						boolean doubleCheck2 = SimpController.isDouble(velocity);
+						
+						if(doubleCheck && doubleCheck2) {
+							angleShoot = Double.parseDouble(angle.getText());
+							velocityShoot = Double.parseDouble(velocity.getText());
+							
+						}
+					});
+					
+					//air with the borders
+					vbox.setPadding(new Insets(20,20,20,20));
+					
+					Label angleText = new Label("Please enter angle to shoot with: ");
+					Label velocityText = new Label("Please enter velocity to shoot with: ");
+					
+					vbox.getChildren().addAll(angleText, angle, velocityText, velocity, button2);
+
+					
+					group.getChildren().add(canvas);
+					group.getChildren().add(vbox);
+					
+					scene2 = new Scene(group, n, m); //game scene made with the layout predefined
 					primaryStage.setScene(scene2); //sets game scene
+					
+					
+					
 
 				}
 			});
@@ -68,12 +111,6 @@ public class SimpViewer extends Application {
 			
 			scene1 = new Scene(layout1, 400, 180); //initialization scene with the predefined layout
 			
-			button3 = new Button();
-			button3.setText("Go to scene 1");
-			
-			button3.setOnAction(e -> {
-				primaryStage.setScene(scene1);
-			});
 			
 			
 			
