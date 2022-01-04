@@ -15,8 +15,7 @@ public class SimpModel {
 	// Variabler
 	
 	//Højde og bredde af vindue/frame
-	public static int width = 512;
-	public static int height = 512;
+	public static int width, height;
 	
 	// Andre variabler
 	public static Vector p1 = new Vector(width*0.2,height*0.75);
@@ -171,6 +170,8 @@ public class SimpModel {
     
     //Sætter variabler
     public static void setAllVar() {
+    	width = 512;
+    	height = 512;
         //Opsætning af frame/vindue
         Group root = new Group();
         //Scene theScene = new Scene( root );
