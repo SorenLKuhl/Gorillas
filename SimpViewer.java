@@ -23,57 +23,21 @@ import javafx.util.Callback;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
-public class SimpViewer extends Application {
+public class SimpViewer {
 		
 	
-		TextField nValue, mValue, angle, velocity;
-		Label label1, angleText, velocityText;
-		Button button, button2;
-		Scene scene1, scene2;
-		Stage gameStage;
-		VBox vbox, layout1;
-		Group group;
-		Canvas canvas;
+		static TextField nValue, mValue, angle, velocity;
+		static Label label1, angleText, velocityText;
+		static Button button, button2;
+		static Scene scene1, scene2;
+		static Stage gameStage;
+		static VBox vbox, layout1;
+		static Group group;
+		static Canvas canvas;
 
-		public static void main(String[] args) {
-			launch(args);
-		}
-		@Override
-		public void start(Stage primaryStage) throws Exception {
-			
-			primaryStage.setTitle("Gorillas"); //stage
-			
-			widthAndHeightInterface();
-
-			button.setOnAction(e -> { //sets the dimensions of the game and checks if the values are valid
-				boolean b = SimpController.isInt(nValue);
-				boolean c = SimpController.isInt(mValue);
-				if (b && c == true) {
-					angleAndVelocityInterface();
-					//assigns value to angleShoot and velocityShoot if the entered values are valid
-					button2.setOnAction(event -> { 
-						boolean doubleCheck = SimpController.isValidAngle(angle);
-						boolean doubleCheck2 = SimpController.isDouble(velocity);
-						
-						if(doubleCheck && doubleCheck2) {
-							SimpModel.angleShoot = Double.parseDouble(angle.getText());
-							SimpModel.velocityShoot = Double.parseDouble(velocity.getText());
-							
-						}
-					});
-					primaryStage.setScene(scene2); //sets game scene
-				}
-			});
-			
-
-			
-			
-			
-			primaryStage.setScene(scene1);
-			primaryStage.show();
-		}
 		
-		public void widthAndHeightInterface() {
+		
+		public static void widthAndHeightInterface() {
 			nValue = new TextField(); //textfield for width
 			mValue = new TextField(); //textfield for height
 			label1 = new Label("Enter width and height of the game below"); //description
@@ -88,7 +52,7 @@ public class SimpViewer extends Application {
 		}
 		
 		
-		public void angleAndVelocityInterface() {
+		public static void angleAndVelocityInterface() {
 			SimpModel.n = Integer.parseInt(nValue.getText());
 			SimpModel.m = Integer.parseInt(mValue.getText());
 			

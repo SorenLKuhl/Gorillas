@@ -24,42 +24,27 @@ import javafx.util.Callback;
 
 public class SimpController {
 	
-	public static boolean isInt(TextField in) { //Checks id the userinput is a integer
-		try {
-			Integer.parseInt(in.getText());
-			System.out.println("hej");
-			return true;
-		}catch(NumberFormatException e) {
-			System.out.println("Error: " + in.getText() + " is not a number" );
-			return false;
-		}
-		
-	}
-	public static boolean isDouble(TextField in) { //Checks id the userinput is a double
-		try {
-			Double.parseDouble(in.getText());
-			System.out.println("hej");
-			return true;
-		}catch(NumberFormatException e) {
-			System.out.println("Error: " + in.getText() + " is not a number" );
-			return false;
-		}
-		
-	}
-	public static boolean isValidAngle(TextField in) { //Checks id the userinput is an angle
-		try {
-			Double.parseDouble(in.getText());
-			if (Double.parseDouble(in.getText()) >= 0 && Double.parseDouble(in.getText()) <=90) {
-				return true;
+	
+	
+	public static void buttons(Stage stage) {
+		SimpViewer.button.setOnAction(e -> { //sets the dimensions of the game and checks if the values are valid
+			if (SimpModel.isInt(SimpViewer.nValue) && SimpModel.isInt(SimpViewer.mValue) == true) {
+				SimpViewer.angleAndVelocityInterface();
+				
+				stage.setScene(SimpViewer.scene2); //sets game scene
+				
+				//assigns value to angleShoot and velocityShoot if the entered values are valid
+				SimpViewer.button2.setOnAction(event -> { 
+					
+					
+					if(SimpModel.isValidAngle(SimpViewer.angle) && SimpModel.isDouble(SimpViewer.velocity)) {
+						SimpModel.angleShoot = Double.parseDouble(SimpViewer.angle.getText());
+						SimpModel.velocityShoot = Double.parseDouble(SimpViewer.velocity.getText());	
+					}
+				});
+				
 			}
-			else {
-				return false;
-			}
-		}catch(NumberFormatException e) {
-			System.out.println("Error: " + in.getText() + " is not a number" );
-			return false;
-		}
-		
+		});
 	}
-
 }
+
