@@ -82,6 +82,11 @@ public class SimpModel {
 		projectile.y = KasteparabelY(velocity, angle, projectile.x);
 	}
 	
+	public static double changeDir(double angle) {
+		double rad = Math.toRadians(angle);
+		rad = Math.PI - rad;
+		return Math.toDegrees(rad);
+	}
 	
 
 }
