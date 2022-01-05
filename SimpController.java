@@ -28,7 +28,7 @@ public class SimpController {
 	
 	public static void buttons(Stage stage) {
 		SimpViewer.button.setOnAction(e -> { //sets the dimensions of the game and checks if the values are valid
-			if (SimpModel.isInt(SimpViewer.nValue) && SimpModel.isInt(SimpViewer.mValue) == true) {
+			if (SimpModel.isPosInt(SimpViewer.nValue) && SimpModel.isPosInt(SimpViewer.mValue) == true) {
 				SimpViewer.angleAndVelocityInterface();
 				
 				stage.setScene(SimpViewer.scene2); //sets game scene
@@ -37,7 +37,7 @@ public class SimpController {
 				SimpViewer.button2.setOnAction(event -> { 
 					
 					
-					if(SimpModel.isValidAngle(SimpViewer.angle) && SimpModel.isDouble(SimpViewer.velocity)) {
+					if(SimpModel.isValidAngle(SimpViewer.angle) && SimpModel.isPosDouble(SimpViewer.velocity)) {
 						SimpModel.angleShoot = Double.parseDouble(SimpViewer.angle.getText());
 						SimpModel.velocityShoot = Double.parseDouble(SimpViewer.velocity.getText());	
 					}
@@ -46,5 +46,7 @@ public class SimpController {
 			}
 		});
 	}
+	
+	//public static void 
 }
 

@@ -64,10 +64,10 @@ public class TestJavaFX extends Application {
         GraphicsContext gc = canvas.getGraphicsContext2D();
      
         //Loader billeder
-        Image player1	= new Image( "MIG.png" );
-        Image player2   = new Image( "MIG.png" );
-        Image baggrund	= new Image( "ral-2005.jpeg" );
-        Image shot		= new Image( "MIG.png" );
+        Image player1	= new Image( "HarambeLeft.png" );
+        Image player2   = new Image( "HarambeRight.png" );
+        Image baggrund	= new Image( "Background.jpg" );
+        Image shot		= new Image( "Banana.png" );
         
         setAngleAndVel();
         
@@ -156,7 +156,7 @@ public class TestJavaFX extends Application {
     
     
     public static void setAngleAndVel() {
-    //	System.out.print("\033[H\033[2J"); // Clear console
+    	//System.out.print("\033[H\033[2J"); // Clear console
     	//System.out.flush();
     	if(p1Turn) {
     		System.out.println("Player 1, din tur!");
