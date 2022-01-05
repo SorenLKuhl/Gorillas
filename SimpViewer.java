@@ -41,6 +41,9 @@ public class SimpViewer {
 		static Canvas canvas;
 		static GraphicsContext gc;
 		static Image projectile = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\Banana.png");
+		static Image background = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\Banana.png");
+		static Image player1 = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\HarambeLeft.png");
+		static Image player2 = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\HarambeRight.png");
 		
 		public static void widthAndHeightInterface() {
 			nValue = new TextField(); //textfield for width
@@ -95,18 +98,19 @@ public class SimpViewer {
 		}
 		
 		public static void projectile(double x, double y, double w, double h) {
-			
-			
 			gc.drawImage(projectile, x, y, w, h);
 			
 		}
 		
 		public static void players() {
-			Image player1 = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\HarambeLeft.png");
-			Image player2 = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\HarambeRight.png");
+
 			
 			gc.drawImage(player1, 0, SimpModel.m - 40, 40, 40);
 			gc.drawImage(player2, SimpModel.n-40, SimpModel.m - 40, 40, 40);
+		}
+		
+		public static void background() {
+			
 		}
 		
 

@@ -43,6 +43,7 @@ public class SimpController {
 					if(SimpModel.isValidAngle(SimpViewer.angle) && SimpModel.isPosDouble(SimpViewer.velocity)) {
 						SimpModel.angleShoot = Double.parseDouble(SimpViewer.angle.getText());
 						SimpModel.velocityShoot = Double.parseDouble(SimpViewer.velocity.getText());
+						SimpModel.angleShoot = Math.toRadians(SimpModel.angleShoot);
 						drawProjectile();
 					}
 				});
@@ -52,19 +53,15 @@ public class SimpController {
 	}
 	
 	public static void drawProjectile() {
-		new AnimationTimer()
-        {
+		new AnimationTimer() {
 			int t = 0;
-            public void handle(long currentNanoTime)
-            {
+            public void handle(long currentNanoTime) {
             	SimpModel.KasteparabelPoint(SimpModel.velocityShoot,SimpModel.angleShoot, t, 0);
-            	SimpViewer.projectile(SimpModel.projectile.x + SimpModel.n/2,SimpModel.projectile.y + SimpModel.m/2,20,20);
+            	SimpViewer.projectile(SimpModel.projectile.x,SimpModel.projectile.y + SimpModel.m,20,20);
             	t++;
 	                //Delay 30 millisekunder
 	                try {TimeUnit.MILLISECONDS.sleep(30);} catch (InterruptedException e) {}
-            	
             }
-            
         }.start();
 	}
 }

@@ -5,7 +5,7 @@ import java.awt.Point;
 import javafx.scene.control.TextField;
 
 public class SimpModel {
-	public static Double angleShoot, velocityShoot;
+	public static double angleShoot, velocityShoot;
 	public static int m, n, p1Pos, p1R, p2Pos, p2R;
 	static Vector projectile = new Vector();
 	
@@ -69,12 +69,10 @@ public class SimpModel {
 	}
 	
 	public static double KasteparabelY(double velocity, double angle, double x) {
-		//angle = Math.toRadians(angle);
-		return (9.8/(2*angle*angle*Math.cos(angle)*Math.cos(angle)))*x*x+Math.tan(angle)*x;
+		return -(-(9.8/(2*velocity*velocity*Math.cos(angle)*Math.cos(angle)))*x*x+Math.tan(angle)*x);
 	}
 	
 	public static double KasteparabelX(double velocity, double angle, double t, double x0) {
-		//angle = Math.toRadians(angle);
 		return velocity*Math.cos(angle)*t+x0;
 	}
 	
