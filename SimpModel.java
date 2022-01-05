@@ -6,8 +6,8 @@ import javafx.scene.control.TextField;
 
 public class SimpModel {
 	public static double angleShoot, velocityShoot;
-	public static int m, n, p1Pos, p1R, p2Pos, p2R;
-	static Vector projectile = new Vector();
+	public static int m, n, playerSize = 40;
+	static Vector position = new Vector();
 	
 	public static boolean isValidAngle(TextField in) { //Checks id the userinput is an angle
 		try {
@@ -78,10 +78,14 @@ public class SimpModel {
 	
 	public static void KasteparabelPoint(double velocity, double angle, double t, double x0) {
 		
-		projectile.x = KasteparabelX(velocity, angle, t, x0);
-		projectile.y = KasteparabelY(velocity, angle, projectile.x);
+		position.x = KasteparabelX(velocity, angle, t, x0);
+		position.y = KasteparabelY(velocity, angle, position.x);
 	}
 	
-	
+	public static double changeDir(double angle) {
+        double rad = Math.toRadians(angle);
+        rad = Math.PI - rad;
+        return Math.toDegrees(rad);
+    }
 
 }

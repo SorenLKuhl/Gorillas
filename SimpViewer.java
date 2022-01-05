@@ -105,8 +105,8 @@ public class SimpViewer {
 		public static void players() {
 
 			
-			gc.drawImage(player1, 0, SimpModel.m - 40, 40, 40);
-			gc.drawImage(player2, SimpModel.n-40, SimpModel.m - 40, 40, 40);
+			gc.drawImage(player1, 0, SimpModel.m - SimpModel.playerSize, SimpModel.playerSize, SimpModel.playerSize);
+			gc.drawImage(player2, SimpModel.n-SimpModel.playerSize, SimpModel.m - SimpModel.playerSize, SimpModel.playerSize, SimpModel.playerSize);
 		}
 		
 		public static void background() {

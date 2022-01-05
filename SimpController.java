@@ -27,42 +27,49 @@ import javafx.util.Callback;
 
 public class SimpController {
 	
-	
-	
-	public static void buttons(Stage stage) {
-		SimpViewer.button.setOnAction(e -> { //sets the dimensions of the game and checks if the values are valid
-			if (SimpModel.isPosInt(SimpViewer.nValue) && SimpModel.isPosInt(SimpViewer.mValue) == true) {
-				SimpViewer.angleAndVelocityInterface();
-				
-				stage.setScene(SimpViewer.scene2); //sets game scene
-				SimpViewer.players();
-				//assigns value to angleShoot and velocityShoot if the entered values are valid
-				SimpViewer.button2.setOnAction(event -> { 
-					
-					
-					if(SimpModel.isValidAngle(SimpViewer.angle) && SimpModel.isPosDouble(SimpViewer.velocity)) {
-						SimpModel.angleShoot = Double.parseDouble(SimpViewer.angle.getText());
-						SimpModel.velocityShoot = Double.parseDouble(SimpViewer.velocity.getText());
-						SimpModel.angleShoot = Math.toRadians(SimpModel.angleShoot);
-						drawProjectile();
-					}
-				});
-				
-			}
-		});
-	}
+	static boolean p1Turn = true, p2Turn = false;
 	
 	public static void drawProjectile() {
 		new AnimationTimer() {
 			int t = 0;
             public void handle(long currentNanoTime) {
             	SimpModel.KasteparabelPoint(SimpModel.velocityShoot,SimpModel.angleShoot, t, 0);
-            	SimpViewer.projectile(SimpModel.projectile.x,SimpModel.projectile.y + SimpModel.m,20,20);
+            	SimpViewer.projectile(SimpModel.position.x,SimpModel.position.y + SimpModel.m,20,20);
             	t++;
 	                //Delay 30 millisekunder
-	                try {TimeUnit.MILLISECONDS.sleep(30);} catch (InterruptedException e) {}
+	            try {TimeUnit.MILLISECONDS.sleep(30);} catch (InterruptedException e) {}
             }
         }.start();
 	}
+	
+	public static void button1(Stage stage) {
+		SimpViewer.button.setOnAction(e -> { //sets the dimensions of the game and checks if the values are valid
+			if (SimpModel.isPosInt(SimpViewer.nValue) && SimpModel.isPosInt(SimpViewer.mValue) == true) {
+				SimpViewer.angleAndVelocityInterface();
+				
+				stage.setScene(SimpViewer.scene2); //sets game scene
+				SimpViewer.players();
+				
+				button2();
+				
+			}
+		});
+	}
+	
+	public static void button2() {
+		//assigns value to angleShoot and velocityShoot if the entered values are valid
+		SimpViewer.button2.setOnAction(event -> { 
+					
+					
+			if(SimpModel.isValidAngle(SimpViewer.angle) && SimpModel.isPosDouble(SimpViewer.velocity)) {
+				SimpModel.angleShoot = Math.toRadians(Double.parseDouble(SimpViewer.angle.getText()));
+				SimpModel.velocityShoot = Double.parseDouble(SimpViewer.velocity.getText());
+				drawProjectile();
+			}
+		});
+	}
+	
+	
+	
 }
 

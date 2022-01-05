@@ -32,7 +32,7 @@ public class SimpGorillas extends Application {
 		
 		SimpViewer.widthAndHeightInterface();
 
-		SimpController.buttons(primaryStage);
+		SimpController.button1(primaryStage);
 		
 		primaryStage.setScene(SimpViewer.scene1);
 		primaryStage.show();
