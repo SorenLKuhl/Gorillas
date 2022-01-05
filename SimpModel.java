@@ -1,10 +1,13 @@
 package Gorillas;
 
+import java.awt.Point;
+
 import javafx.scene.control.TextField;
 
 public class SimpModel {
 	public static Double angleShoot, velocityShoot;
-	public static int m, n;
+	public static int m, n, p1Pos, p1R, p2Pos, p2R;
+	static Vector projectile = new Vector();
 	
 	public static boolean isValidAngle(TextField in) { //Checks id the userinput is an angle
 		try {
@@ -63,6 +66,22 @@ public class SimpModel {
 			System.out.println("Error: " + in.getText() + " is not a number" );
 			return false;
 		}
+	}
+	
+	public static double KasteparabelY(double velocity, double angle, double x) {
+		//angle = Math.toRadians(angle);
+		return (9.8/(2*angle*angle*Math.cos(angle)*Math.cos(angle)))*x*x+Math.tan(angle)*x;
+	}
+	
+	public static double KasteparabelX(double velocity, double angle, double t, double x0) {
+		//angle = Math.toRadians(angle);
+		return velocity*Math.cos(angle)*t+x0;
+	}
+	
+	public static void KasteparabelPoint(double velocity, double angle, double t, double x0) {
+		
+		projectile.x = KasteparabelX(velocity, angle, t, x0);
+		projectile.y = KasteparabelY(velocity, angle, projectile.x);
 	}
 	
 	

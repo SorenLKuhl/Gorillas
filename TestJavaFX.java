@@ -64,10 +64,10 @@ public class TestJavaFX extends Application {
         GraphicsContext gc = canvas.getGraphicsContext2D();
      
         //Loader billeder
-        Image player1	= new Image( "HarambeLeft.png" );
-        Image player2   = new Image( "HarambeRight.png" );
-        Image baggrund	= new Image( "Background.jpg" );
-        Image shot		= new Image( "Banana.png" );
+        Image player1	= new Image( "C:\\Users\\soren\\OneDrive\\Desktop\\HarambeLeft.png" );
+        Image player2   = new Image( "C:\\Users\\soren\\OneDrive\\Desktop\\HarambeRight.png" );
+        Image baggrund	= new Image( "C:\\Users\\soren\\OneDrive\\Desktop\\Background.jpg" );
+        Image shot		= new Image( "C:\\Users\\soren\\OneDrive\\Desktop\\Banana.png" );
         
         setAngleAndVel();
         

@@ -22,6 +22,11 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+
+
+
+import javafx.animation.*;
 
 public class SimpViewer {
 		
@@ -34,8 +39,8 @@ public class SimpViewer {
 		static VBox vbox, layout1;
 		static Group group;
 		static Canvas canvas;
-
-		
+		static GraphicsContext gc;
+		static Image projectile = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\Banana.png");
 		
 		public static void widthAndHeightInterface() {
 			nValue = new TextField(); //textfield for width
@@ -56,9 +61,11 @@ public class SimpViewer {
 			SimpModel.n = Integer.parseInt(nValue.getText());
 			SimpModel.m = Integer.parseInt(mValue.getText());
 			
+			
 			group = new Group(); //layout of game
 			
 			canvas = new Canvas(SimpModel.n,SimpModel.m);
+			gc = canvas.getGraphicsContext2D();
 			
 			vbox = new VBox(10);
 			//textfields for shooting specifications and the field's size
@@ -85,6 +92,21 @@ public class SimpViewer {
 			
 			scene2 = new Scene(group); //game scene made with the layout predefined
 			
+		}
+		
+		public static void projectile(double x, double y, double w, double h) {
+			
+			
+			gc.drawImage(projectile, x, y, w, h);
+			
+		}
+		
+		public static void players() {
+			Image player1 = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\HarambeLeft.png");
+			Image player2 = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\HarambeRight.png");
+			
+			gc.drawImage(player1, 0, SimpModel.m - 40, 40, 40);
+			gc.drawImage(player2, SimpModel.n-40, SimpModel.m - 40, 40, 40);
 		}
 		
 
