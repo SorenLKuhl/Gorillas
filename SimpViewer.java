@@ -40,10 +40,10 @@ public class SimpViewer {
 		static Group group;
 		static Canvas canvas;
 		static GraphicsContext gc;
-		static Image projectile = new Image("MIG.JPG");
-		static Image background = new Image("MIG.JPG");
-		static Image player1 = new Image("MIG.JPG");
-		static Image player2 = new Image("MIG.JPG");
+		static Image projectile = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\Banana.png");
+		static Image background = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\Banana.png");
+		static Image player1 = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\HarambeLeft.png");
+		static Image player2 = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\HarambeRight.png");
 		
 		public static void widthAndHeightInterface() {
 			nValue = new TextField(); //textfield for width
