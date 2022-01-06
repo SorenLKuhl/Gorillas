@@ -42,7 +42,7 @@ public class SimpController {
 					
 					if(SimpModel.isValidAngle(SimpViewer.angle) && SimpModel.isPosDouble(SimpViewer.velocity)) {
 						SimpModel.angleShoot = Double.parseDouble(SimpViewer.angle.getText());
-						if(true) { // player 2 turn
+						if(false) { // player 2 turn
 							SimpModel.angleShoot = SimpModel.changeDir(SimpModel.angleShoot);
 						}
 						SimpModel.velocityShoot = Double.parseDouble(SimpViewer.velocity.getText());
@@ -50,6 +50,7 @@ public class SimpController {
 						SimpModel.angleShoot = Math.toRadians(SimpModel.angleShoot);
 						drawProjectile();
 					}
+
 				});
 				
 			}
@@ -61,7 +62,13 @@ public class SimpController {
 			int t = 0;
             public void handle(long currentNanoTime) {
             	SimpModel.KasteparabelPoint(SimpModel.velocityShoot,SimpModel.angleShoot, t, 0);
-            	SimpViewer.projectile(SimpModel.position.x+SimpModel.m*0.5,SimpModel.position.y + SimpModel.m,20,20);
+            	SimpViewer.projectile(SimpModel.position.x,SimpModel.position.y,20,20);
+            	
+            	// I stedet for 20 og 10, skal det være radius på player2 og skudet
+				if(SimpModel.collision(SimpModel.position,SimpModel.positionPlayer2,20, 10)) {
+					System.out.println("Hit!");
+				}
+				
             	t++;
 	                //Delay 30 millisekunder
 	                try {TimeUnit.MILLISECONDS.sleep(30);} catch (InterruptedException e) {}

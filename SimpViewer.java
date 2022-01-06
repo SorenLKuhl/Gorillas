@@ -104,9 +104,13 @@ public class SimpViewer {
 		
 		public static void players() {
 
+			// Det her burde ikke være i et loop
+			SimpModel.positionPlayer1 = new Vector(0,SimpModel.m - 40);
+			SimpModel.positionPlayer2 = new Vector(SimpModel.n - 40,SimpModel.m - 40);
 			
-			gc.drawImage(player1, 0, SimpModel.m - 40, 40, 40);
-			gc.drawImage(player2, SimpModel.n-40, SimpModel.m - 40, 40, 40);
+			
+			gc.drawImage(player1, SimpModel.positionPlayer1.x, SimpModel.positionPlayer1.y, 40, 40);
+			gc.drawImage(player2, SimpModel.positionPlayer2.x, SimpModel.positionPlayer2.y, 40, 40);
 		}
 		
 		public static void background() {

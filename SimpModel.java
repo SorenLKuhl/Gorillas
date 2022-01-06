@@ -8,6 +8,9 @@ public class SimpModel {
 	public static double angleShoot, velocityShoot;
 	public static int m, n, p1Pos, p1R, p2Pos, p2R;
 	static Vector position = new Vector();
+	static Vector positionPlayer1 = new Vector(0,SimpModel.m - 40);
+	static Vector positionPlayer2 = new Vector(SimpModel.n - 40,SimpModel.m - 40);
+	
 	
 	public static boolean isValidAngle(TextField in) { //Checks id the userinput is an angle
 		try {
@@ -69,7 +72,7 @@ public class SimpModel {
 	}
 	
 	public static double KasteparabelY(double velocity, double angle, double x) {
-		return -(-(9.8/(2*velocity*velocity*Math.cos(angle)*Math.cos(angle)))*x*x+Math.tan(angle)*x);
+		return -(-(9.8/(2*velocity*velocity*Math.cos(angle)*Math.cos(angle)))*x*x+Math.tan(angle)*x)+ SimpModel.m;
 	}
 	
 	public static double KasteparabelX(double velocity, double angle, double t, double x0) {
@@ -87,6 +90,21 @@ public class SimpModel {
         rad = Math.PI - rad;
         return Math.toDegrees(rad);
     }
+	
+	
+    // Beregner Distancen mellem 2 punkter
+    public static double dist(double x1, double y1, double x2, double y2) {
+    	return Math.sqrt(Math.pow((x2-x1),2)+Math.pow((y2-y1),2));
+    }
+	
+    
+	public static boolean collision(double x1, double y1, double x2, double y2, double rad1, double rad2) {
+		return ( dist(x1,y1,x2,y2) < (rad1 + rad2) );
+	}
+	
+	public static boolean collision(Vector v1, Vector v2, double rad1, double rad2) {
+		return ( dist(v1.x,v1.y,v2.x,v2.y) < (rad1 + rad2) );
+	}
 	
 
 }
