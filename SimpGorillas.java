@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.scene.image.Image;
 
+
 public class SimpGorillas extends Application {
 	public static void main(String[] args) {
 		launch(args);
@@ -39,6 +40,7 @@ public class SimpGorillas extends Application {
 		SimpController.button1(primaryStage);
 		
 		primaryStage.setScene(SimpViewer.scene1);
+		primaryStage.setResizable(false);
 		primaryStage.show();
 	}
 

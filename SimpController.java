@@ -37,6 +37,7 @@ public class SimpController {
 				stage.setScene(SimpViewer.scene2); //sets game scene
 				SimpViewer.background();
 				SimpViewer.players();
+				SimpViewer.scoreBoard();
 				
 				button2();
 				
@@ -76,12 +77,14 @@ public class SimpController {
             	}
             	if(p2Turn) {
             		if(SimpModel.collision(SimpModel.position.x,SimpModel.position.y,SimpModel.n-1,SimpModel.m)) {
+            			SimpViewer.player1score++;
             			SimpViewer.hitText();
             			stop();
             		}
             	}
             	else if(p1Turn) {
             		if(SimpModel.collision(SimpModel.position.x,SimpModel.position.y,0,SimpModel.m)) {
+            			SimpViewer.player2score++;
             			SimpViewer.hitText();
             			stop();
             		}
@@ -104,6 +107,7 @@ public class SimpController {
         }
         SimpViewer.background();
         SimpViewer.players();
+        SimpViewer.scoreBoard();
     }
 
 	

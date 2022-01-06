@@ -42,6 +42,7 @@ public class SimpViewer {
 		static Image background = new Image("background.jpeg");
 		static Image player1 = new Image("venstre.png");
 		static Image player2 = new Image("right.png");
+		static int player1score = 0, player2score = 0;
 		
 		public static void widthAndHeightInterface() {
 			nValue = new TextField(); //textfield for width
@@ -130,6 +131,12 @@ public class SimpViewer {
 				gc.fillText("Player 1's banana hit!", SimpModel.n/2, SimpModel.m/4);
 				
 			}
+		}
+		
+		public static void scoreBoard() {
+			gc.setFont(new Font(30));
+			gc.setFill(Color.BLACK);
+			gc.fillText(player1score + " | " +  player2score, SimpModel.n/2, SimpModel.m/16);
 		}
 		
 		
