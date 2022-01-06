@@ -39,9 +39,9 @@ public class SimpViewer {
 		static Canvas canvas;
 		static GraphicsContext gc;
 		static Image projectile = new Image("banana.png");
-		static Image background = new Image("background.jpeg");
-		static Image player1 = new Image("venstre.png");
-		static Image player2 = new Image("right.png");
+		static Image background = new Image("background.jpg");
+		static Image player1 = new Image("player1.png");
+		static Image player2 = new Image("player2.png");
 		static int player1score = 0, player2score = 0;
 		
 		public static void widthAndHeightInterface() {
@@ -93,7 +93,6 @@ public class SimpViewer {
 			group.getChildren().add(vbox);
 			
 			scene2 = new Scene(group); //game scene made with the layout predefined
-			
 		}
 		
 		public static void projectile(double x, double y, double w, double h) {
@@ -109,6 +108,7 @@ public class SimpViewer {
 		public static void background() {
             gc.drawImage(background, 0, 0, SimpModel.n, SimpModel.m);
         }
+		
 		public static void playerTurnText() {
 			gc.setFont(new Font(30));
 			gc.setFill(Color.RED);
@@ -121,6 +121,7 @@ public class SimpViewer {
 				
 			}
 		}
+		
 		public static void hitText() {
 			gc.setFont(new Font(30));
 			gc.setFill(Color.GREEN);

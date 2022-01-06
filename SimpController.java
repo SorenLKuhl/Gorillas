@@ -70,24 +70,9 @@ public class SimpController {
             public void handle(long currentNanoTime) {
             	SimpModel.KasteparabelPoint(SimpModel.velocityShoot,SimpModel.angleShoot, t, SimpModel.x0);
             	SimpViewer.projectile(SimpModel.position.x,SimpModel.position.y,SimpModel.n/70,SimpModel.n/70);
-            	t += 0.25;
-            	if(SimpModel.ifIntersectBorder() == true) {
-            		SimpViewer.playerTurnText();
+            	t += 0.10	;
+            	if (checkCollision()) {
             		stop();
-            	}
-            	if(p2Turn) {
-            		if(SimpModel.collision(SimpModel.position.x,SimpModel.position.y,SimpModel.n-1,SimpModel.m)) {
-            			SimpViewer.player1score++;
-            			SimpViewer.hitText();
-            			stop();
-            		}
-            	}
-            	else if(p1Turn) {
-            		if(SimpModel.collision(SimpModel.position.x,SimpModel.position.y,0,SimpModel.m)) {
-            			SimpViewer.player2score++;
-            			SimpViewer.hitText();
-            			stop();
-            		}
             	}
             	
 	                //Delay 30 millisekunder
@@ -109,6 +94,29 @@ public class SimpController {
         SimpViewer.players();
         SimpViewer.scoreBoard();
     }
+	
+	public static boolean checkCollision() {
+		if(SimpModel.ifIntersectBorder() == true) {
+            SimpViewer.playerTurnText();
+            return true;
+        }
+        if(p2Turn) {
+            if(SimpModel.collision(SimpModel.position.x,SimpModel.position.y,SimpModel.n-1,SimpModel.m)) {
+            	SimpViewer.player1score++;
+            	SimpViewer.hitText();
+            	return true;
+            }
+        }
+        else if(p1Turn) {
+            if(SimpModel.collision(SimpModel.position.x,SimpModel.position.y,0,SimpModel.m)) {
+            	SimpViewer.player2score++;
+            	SimpViewer.hitText();
+            	return true;
+            }
+        }
+        return false;
+        
+	}
 
 	
 }
