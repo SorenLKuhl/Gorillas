@@ -70,6 +70,7 @@ public class SimpController {
             	SimpViewer.projectile(SimpModel.position.x,SimpModel.position.y,20,20);
             	t += 0.5;
             	if(SimpModel.ifIntersectBorder() == true) {
+            		SimpViewer.playerTurnText();
             		stop();
             	}
 	                //Delay 30 millisekunder
@@ -79,15 +80,17 @@ public class SimpController {
 	}
 	
 	public static void newTurn() {
-		if(p1Turn) {
-			p1Turn = false;
-			p2Turn = true;
-		}
-		else {
-			p1Turn = true;
-			p2Turn = false;
-		}
-	}
+        if(p1Turn) {
+            p1Turn = false;
+            p2Turn = true;
+        }
+        else {
+            p1Turn = true;
+            p2Turn = false;
+        }
+        SimpViewer.background();
+        SimpViewer.players();
+    }
 	
 }
 

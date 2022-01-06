@@ -20,6 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.scene.image.Image;
 
 public class SimpGorillas extends Application {
 	public static void main(String[] args) {
@@ -29,6 +30,9 @@ public class SimpGorillas extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		
 		primaryStage.setTitle("Gorillas"); //stage
+		primaryStage.setTitle("Gorillas"); //stage
+        Image icon = new Image("banana.png");
+        primaryStage.getIcons().add(icon);
 		
 		SimpViewer.widthAndHeightInterface();
 

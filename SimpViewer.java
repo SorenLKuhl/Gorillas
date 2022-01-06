@@ -20,9 +20,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.canvas.*;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 
 import javafx.animation.*;
 
@@ -39,7 +39,7 @@ public class SimpViewer {
 		static Canvas canvas;
 		static GraphicsContext gc;
 		static Image projectile = new Image("banana.png");
-		//static Image background = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\Banana.png");
+		static Image background = new Image("background.jpg");
 		static Image player1 = new Image("venstre.png");
 		static Image player2 = new Image("right.png");
 		
@@ -106,7 +106,19 @@ public class SimpViewer {
 		}
 		
 		public static void background() {
+            gc.drawImage(background, 0, 0, SimpModel.n, SimpModel.m);
+        }
+		public static void playerTurnText() {
+			gc.setFont(new Font(30));
+			gc.setFill(Color.RED);
 			
+			if(SimpController.p1Turn) {
+				gc.fillText("Player 1's turn to shoot", SimpModel.n/2, SimpModel.m/4);
+			}
+			else {
+				gc.fillText("Player 2's turn to shoot", SimpModel.n/2, SimpModel.m/4);
+				
+			}
 		}
 		
 		
