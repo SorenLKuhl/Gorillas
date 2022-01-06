@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 
 public class SimpModel {
 	public static double angleShoot, velocityShoot;
-	public static int m, n, playerSize = 40, x0 = 0;
+	public static int m, n, playerSize, x0 = 0;
 	static Vector position = new Vector();
 	
 	public static boolean isValidAngle(TextField in) { //Checks id the userinput is an angle
@@ -88,6 +88,15 @@ public class SimpModel {
 		}
 		return false;
 	}
+	
+	// Beregner Distancen mellem 2 punkter
+    public static double dist(double x1, double y1, double x2, double y2) {
+        return Math.sqrt(Math.pow((x2-x1),2)+Math.pow((y2-y1),2));
+    }
+    public static boolean collision(double x1, double y1, double x2, double y2) {
+        return ( dist(x1,y1,x2,y2) < (n/50) );
+    }
+
 
 
 

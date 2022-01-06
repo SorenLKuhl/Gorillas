@@ -39,7 +39,7 @@ public class SimpViewer {
 		static Canvas canvas;
 		static GraphicsContext gc;
 		static Image projectile = new Image("banana.png");
-		static Image background = new Image("background.jpg");
+		static Image background = new Image("background.jpeg");
 		static Image player1 = new Image("venstre.png");
 		static Image player2 = new Image("right.png");
 		
@@ -61,7 +61,7 @@ public class SimpViewer {
 		public static void angleAndVelocityInterface() {
 			SimpModel.n = Integer.parseInt(nValue.getText());
 			SimpModel.m = Integer.parseInt(mValue.getText());
-			
+			SimpModel.playerSize = SimpModel.n / 50;
 			
 			group = new Group(); //layout of game
 			
@@ -117,6 +117,17 @@ public class SimpViewer {
 			}
 			else {
 				gc.fillText("Player 2's turn to shoot", SimpModel.n/2, SimpModel.m/4);
+				
+			}
+		}
+		public static void hitText() {
+			gc.setFont(new Font(30));
+			gc.setFill(Color.GREEN);
+			if(SimpController.p1Turn) {
+				gc.fillText("Player 2's banana hit!", SimpModel.n/2, SimpModel.m/4);
+			}
+			else {
+				gc.fillText("Player 1's banana hit!", SimpModel.n/2, SimpModel.m/4);
 				
 			}
 		}
