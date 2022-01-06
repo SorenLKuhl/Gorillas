@@ -13,7 +13,6 @@ public class SimpModel {
 		try {
 			Double.parseDouble(in.getText());
 			if (Double.parseDouble(in.getText()) >= 0 && Double.parseDouble(in.getText()) <=90) {
-				System.out.println("hej");
 				return true;
 			}
 			else {
@@ -28,7 +27,6 @@ public class SimpModel {
 	
 	public static boolean isPosInt(TextField in) {
 		if (isInt(in) && 0 < Integer.parseInt(in.getText())) {
-			System.out.println("hej");
 			return true;
 		}
 		else {
@@ -39,7 +37,6 @@ public class SimpModel {
 	
 	public static boolean isPosDouble(TextField in) {
 		if (isDouble(in) && 0 < Double.parseDouble(in.getText())) {
-			System.out.println("hej");
 			return true;
 		}
 		else {
@@ -69,7 +66,7 @@ public class SimpModel {
 	}
 	
 	public static double KasteparabelY(double velocity, double angle, double x) {
-		return -(-(9.8/(2*velocity*velocity*Math.cos(angle)*Math.cos(angle)))*x*x+Math.tan(angle)*x);
+		return -(-(9.8/(2*velocity*velocity*Math.cos(angle)*Math.cos(angle)))*(x-x0)*(x-x0)+Math.tan(angle)*(x-x0));
 	}
 	
 	public static double KasteparabelX(double velocity, double angle, double t, double x0) {
@@ -77,14 +74,22 @@ public class SimpModel {
 	}
 	
 	public static void KasteparabelPoint(double velocity, double angle, double t, double x0) {
-		
-		position.x = KasteparabelX(velocity, angle, t, x0);
-		position.y = KasteparabelY(velocity, angle, position.x);
-	}
-	
-	public static double changeDir(double angle) {
-        angle = Math.PI - angle;
-        return angle;
+        position.x = KasteparabelX(velocity, angle, t, x0);
+        position.y = KasteparabelY(velocity, angle, position.x) + SimpModel.m;
     }
+	
+	public static void changeDir() {
+        angleShoot = Math.PI - angleShoot;
+        x0 = n;
+    }
+	public static boolean ifIntersectBorder() {
+		if(position.x > n || position.x < 0 || position.y > m || position.y < 0) {
+			return true;
+		}
+		return false;
+	}
+
+
+
 
 }

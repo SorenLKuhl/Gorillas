@@ -51,10 +51,11 @@ public class SimpController {
 				SimpModel.angleShoot = Math.toRadians(Double.parseDouble(SimpViewer.angle.getText()));
 				SimpModel.velocityShoot = Double.parseDouble(SimpViewer.velocity.getText());
 				if(p2Turn) {
-					SimpModel.angleShoot = Math.PI - SimpModel.angleShoot;
-					//SimpModel.angleShoot = SimpModel.changeDir(SimpModel.angleShoot);
-					SimpModel.x0 = SimpModel.n;
-				}
+                    SimpModel.changeDir();
+                	}
+                else {
+                    SimpModel.x0 = 0;
+                	}
 				drawProjectile();
 				newTurn();
 			}
@@ -63,11 +64,14 @@ public class SimpController {
 	
 	public static void drawProjectile() {
 		new AnimationTimer() {
-			int t = 0;
+			double t = 0;
             public void handle(long currentNanoTime) {
             	SimpModel.KasteparabelPoint(SimpModel.velocityShoot,SimpModel.angleShoot, t, SimpModel.x0);
-            	SimpViewer.projectile(SimpModel.position.x,SimpModel.position.y + SimpModel.m,20,20);
-            	t++;
+            	SimpViewer.projectile(SimpModel.position.x,SimpModel.position.y,20,20);
+            	t += 0.5;
+            	if(SimpModel.ifIntersectBorder() == true) {
+            		stop();
+            	}
 	                //Delay 30 millisekunder
 	            try {TimeUnit.MILLISECONDS.sleep(30);} catch (InterruptedException e) {}
             }

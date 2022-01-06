@@ -24,8 +24,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-
-
 import javafx.animation.*;
 
 public class SimpViewer {
@@ -40,10 +38,10 @@ public class SimpViewer {
 		static Group group;
 		static Canvas canvas;
 		static GraphicsContext gc;
-		static Image projectile = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\Banana.png");
-		static Image background = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\Banana.png");
-		static Image player1 = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\HarambeLeft.png");
-		static Image player2 = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\HarambeRight.png");
+		static Image projectile = new Image("banana.png");
+		//static Image background = new Image("C:\\Users\\soren\\OneDrive\\Desktop\\Banana.png");
+		static Image player1 = new Image("venstre.png");
+		static Image player2 = new Image("right.png");
 		
 		public static void widthAndHeightInterface() {
 			nValue = new TextField(); //textfield for width
@@ -103,8 +101,6 @@ public class SimpViewer {
 		}
 		
 		public static void players() {
-
-			
 			gc.drawImage(player1, 0, SimpModel.m - SimpModel.playerSize, SimpModel.playerSize, SimpModel.playerSize);
 			gc.drawImage(player2, SimpModel.n-SimpModel.playerSize, SimpModel.m - SimpModel.playerSize, SimpModel.playerSize, SimpModel.playerSize);
 		}
@@ -112,6 +108,7 @@ public class SimpViewer {
 		public static void background() {
 			
 		}
+		
 		
 
 	
