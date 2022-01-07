@@ -42,10 +42,10 @@ public class SimpViewer {
 		static Group group;
 		static Canvas canvas;
 		static GraphicsContext gc;		
-		static Image projectile = new Image("banana.png");
-		static Image background = new Image("background.jpeg");
-		static Image player1 = new Image("player1.png");
-		static Image player2 = new Image("player1.png");
+		static Image projectile = new Image(ClassLoader.getSystemResource("banana.png").toString());
+        static Image background = new Image(ClassLoader.getSystemResource("background.jpeg").toString());
+        static Image player1 = new Image(ClassLoader.getSystemResource("player1.png").toString());
+        static Image player2 = new Image(ClassLoader.getSystemResource("player1.png").toString());
 		static int player1score = 0, player2score = 0;
 		
 
@@ -80,9 +80,9 @@ public class SimpViewer {
 			vbox = new VBox(10);
 			//textfields for shooting specifications and the field's size
 			angle = new TextField();
-			angle.setPrefWidth(25);
+			angle.setMaxWidth(55);
 			velocity = new TextField();
-			velocity.setPrefWidth(25);
+			velocity.setMaxWidth(55);
 			
 			//"Fire!!" button
 			button2 = new Button();
@@ -91,8 +91,8 @@ public class SimpViewer {
 			//air with the borders
 			vbox.setPadding(new Insets(20,20,20,20));
 			
-			angleText = new Label("Please enter angle to shoot with: ");
-			velocityText = new Label("Please enter velocity to shoot with: ");
+			angleText = new Label("Banana angle: ");
+			velocityText = new Label("Banana velocity: ");
 			
 			vbox.getChildren().addAll(angleText, angle, velocityText, velocity, button2);
 

@@ -85,7 +85,7 @@ public class SimpModel {
     }
 	
 	public static boolean ifIntersectBorder() {		//Checks if the position of the projectile intersects the border of the screen
-		if(position.x > n || position.x < 0 || position.y > m || position.y < 0) {
+		if(position.x > n || position.x < 0 || position.y > m) {
 			return true;
 		}
 		return false;

@@ -76,7 +76,7 @@ public class SimpController {
             	}
             	
 	                //Delay 30 millisekunder
-	            try {TimeUnit.MILLISECONDS.sleep(30);} catch (InterruptedException e) {}
+//	            try {TimeUnit.MILLISECONDS.sleep(30);} catch (InterruptedException e) {}
             }
         }.start();
 	}
