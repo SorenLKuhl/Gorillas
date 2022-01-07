@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -22,7 +23,10 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.scene.canvas.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
+
+
 
 import javafx.animation.*;
 
@@ -37,12 +41,16 @@ public class SimpViewer {
 		static VBox vbox, layout1;
 		static Group group;
 		static Canvas canvas;
-		static GraphicsContext gc;
+		static GraphicsContext gc;		
 		static Image projectile = new Image("banana.png");
-		static Image background = new Image("background.jpg");
+		static Image background = new Image("background.jpeg");
 		static Image player1 = new Image("player1.png");
-		static Image player2 = new Image("player2.png");
+		static Image player2 = new Image("player1.png");
 		static int player1score = 0, player2score = 0;
+		
+
+
+		
 		
 		public static void widthAndHeightInterface() {
 			nValue = new TextField(); //textfield for width
@@ -95,8 +103,9 @@ public class SimpViewer {
 			scene2 = new Scene(group); //game scene made with the layout predefined
 		}
 		
-		public static void projectile(double x, double y, double w, double h) {
+		public static void projectile(double x, double y, double w, double h) {	
 			gc.drawImage(projectile, x, y, w, h);
+
 			
 		}
 		
@@ -111,13 +120,13 @@ public class SimpViewer {
 		
 		public static void playerTurnText() {
 			gc.setFont(new Font(30));
-			gc.setFill(Color.RED);
+			gc.setFill(Color.rgb(5,184,255));
 			
 			if(SimpController.p1Turn) {
-				gc.fillText("Player 1's turn to shoot", SimpModel.n/2, SimpModel.m/4);
+				gc.fillText("Player 2 missed! Player 1's turn to shoot!", SimpModel.n/3, SimpModel.m/6);
 			}
 			else {
-				gc.fillText("Player 2's turn to shoot", SimpModel.n/2, SimpModel.m/4);
+				gc.fillText("Player 1 missed! Player 2's turn to shoot!", SimpModel.n/3, SimpModel.m/6);
 				
 			}
 		}
@@ -126,10 +135,10 @@ public class SimpViewer {
 			gc.setFont(new Font(30));
 			gc.setFill(Color.GREEN);
 			if(SimpController.p1Turn) {
-				gc.fillText("Player 2's banana hit!", SimpModel.n/2, SimpModel.m/4);
+				gc.fillText("Player 2's banana hit!", SimpModel.n/2, SimpModel.m/6);
 			}
 			else {
-				gc.fillText("Player 1's banana hit!", SimpModel.n/2, SimpModel.m/4);
+				gc.fillText("Player 1's banana hit!", SimpModel.n/2, SimpModel.m/6);
 				
 			}
 		}
@@ -138,6 +147,12 @@ public class SimpViewer {
 			gc.setFont(new Font(30));
 			gc.setFill(Color.BLACK);
 			gc.fillText(player1score + " | " +  player2score, SimpModel.n/2, SimpModel.m/16);
+		}
+		
+		public static void drawMap() {
+	        SimpViewer.background();
+	        SimpViewer.players();
+	        SimpViewer.scoreBoard();
 		}
 		
 		

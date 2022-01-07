@@ -29,8 +29,6 @@ public class SimpGorillas extends Application {
 	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
-		primaryStage.setTitle("Gorillas"); //stage
 		primaryStage.setTitle("Gorillas"); //stage
         Image icon = new Image("banana.png");
         primaryStage.getIcons().add(icon);

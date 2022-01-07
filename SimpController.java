@@ -35,10 +35,7 @@ public class SimpController {
 				SimpViewer.angleAndVelocityInterface();
 				
 				stage.setScene(SimpViewer.scene2); //sets game scene
-				SimpViewer.background();
-				SimpViewer.players();
-				SimpViewer.scoreBoard();
-				
+				SimpViewer.drawMap();
 				button2();
 				
 			}
@@ -68,9 +65,12 @@ public class SimpController {
 		new AnimationTimer() {
 			double t = 0;
             public void handle(long currentNanoTime) {
+            	SimpViewer.drawMap();
             	SimpModel.KasteparabelPoint(SimpModel.velocityShoot,SimpModel.angleShoot, t, SimpModel.x0);
             	SimpViewer.projectile(SimpModel.position.x,SimpModel.position.y,SimpModel.n/70,SimpModel.n/70);
-            	t += 0.10	;
+            	
+            	t += 0.10;
+
             	if (checkCollision()) {
             		stop();
             	}
@@ -90,9 +90,7 @@ public class SimpController {
             p1Turn = true;
             p2Turn = false;
         }
-        SimpViewer.background();
-        SimpViewer.players();
-        SimpViewer.scoreBoard();
+        SimpViewer.drawMap();
     }
 	
 	public static boolean checkCollision() {
