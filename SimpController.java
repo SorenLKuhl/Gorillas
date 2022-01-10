@@ -67,8 +67,7 @@ public class SimpController {
             public void handle(long currentNanoTime) {
             	SimpViewer.drawMap();
             	SimpModel.KasteparabelPoint(SimpModel.velocityShoot,SimpModel.angleShoot, t, SimpModel.x0);
-            	SimpViewer.projectile(SimpModel.position.x,SimpModel.position.y,SimpModel.n/70,SimpModel.n/70);
-            	
+            	SimpViewer.projectile();
             	t += 0.10;
 
             	if (checkCollision()) {
@@ -99,14 +98,14 @@ public class SimpController {
             return true;
         }
         if(p2Turn) {
-            if(SimpModel.collision(SimpModel.position.x,SimpModel.position.y,SimpModel.n-1,SimpModel.m)) {
+            if(SimpModel.collision(SimpModel.n-1,SimpModel.m)) {
             	SimpViewer.player1score++;
             	SimpViewer.hitText();
             	return true;
             }
         }
         else if(p1Turn) {
-            if(SimpModel.collision(SimpModel.position.x,SimpModel.position.y,0,SimpModel.m)) {
+            if(SimpModel.collision(0,SimpModel.m)) {
             	SimpViewer.player2score++;
             	SimpViewer.hitText();
             	return true;

@@ -103,10 +103,8 @@ public class SimpViewer {
 			scene2 = new Scene(group); //game scene made with the layout predefined
 		}
 		
-		public static void projectile(double x, double y, double w, double h) {	
-			gc.drawImage(projectile, x, y, w, h);
-
-			
+		public static void projectile() {	
+			gc.drawImage(projectile, SimpModel.position.x - (SimpModel.n/70)/2, SimpModel.position.y - (SimpModel.n/70)/2, SimpModel.n/70, SimpModel.n/70);
 		}
 		
 		public static void players() {

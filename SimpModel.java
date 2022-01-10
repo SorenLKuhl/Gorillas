@@ -84,19 +84,19 @@ public class SimpModel {
         x0 = n;
     }
 	
-	public static boolean ifIntersectBorder() {		//Checks if the position of the projectile intersects the border of the screen
+	public static boolean ifIntersectBorder() {	//Checks if the position of the projectile intersects the border of the screen
 		if(position.x > n || position.x < 0 || position.y > m) {
 			return true;
 		}
 		return false;
 	}
 	
-    public static double dist(double x1, double y1, double x2, double y2) {		// Beregner Distancen mellem 2 punkter
-        return Math.sqrt(Math.pow((x2-x1),2)+Math.pow((y2-y1),2));
+    public static double dist(double x2, double y2) {// calculates the distance between a point (most likely a player or obstacle) and the projectile
+        return Math.sqrt(Math.pow((x2-position.x),2)+Math.pow((y2-position.y),2));
     }
     
-    public static boolean collision(double x1, double y1, double x2, double y2) {	//Checks if the projectile hit the other player
-        return ( dist(x1,y1,x2,y2) < (n/50) );
+    public static boolean collision(double x2, double y2) {//Checks if the projectile is within "hit distance" of the given point
+        return ( dist(x2,y2) < (n/50) );
     }
 
 
