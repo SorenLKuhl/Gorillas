@@ -32,10 +32,9 @@ public class AdvGorillas extends Application {
 		primaryStage.setTitle("Gorillas"); //stage
         Image icon = new Image(ClassLoader.getSystemResource("banana.png").toString());
         primaryStage.getIcons().add(icon);
-		
 		AdvViewer.widthAndHeightInterface();
-
 		AdvController.button1(primaryStage);
+		
 		
 		primaryStage.setScene(AdvViewer.scene1);
 		primaryStage.setResizable(false);

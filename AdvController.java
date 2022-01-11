@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -31,7 +32,7 @@ public class AdvController {
 	
 	public static void button1(Stage stage) {
 		AdvViewer.button.setOnAction(e -> { //sets the dimensions of the game and checks if the values are valid
-			if (AdvModel.isPosInt(AdvViewer.nValue) && AdvModel.isPosInt(AdvViewer.mValue) == true) {
+			if (AdvModel.isPosInt(AdvViewer.nValue) && AdvModel.isPosInt(AdvViewer.mValue)  == true) {
 				AdvViewer.angleAndVelocityInterface();
 				AdvModel.setYPos();
 				AdvModel.setProjectileSize(AdvModel.n/70); 
@@ -108,7 +109,7 @@ public class AdvController {
         return false;
         
 	}
-
 	
 }
+	        
 

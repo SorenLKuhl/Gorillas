@@ -9,6 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -43,7 +44,7 @@ public class AdvViewer {
 		static Canvas canvas;
 		static GraphicsContext gc;		
 		static Image projectile = new Image(ClassLoader.getSystemResource("banana.png").toString());
-        static Image background = new Image(ClassLoader.getSystemResource("background.jpg").toString());
+        static Image background = new Image(ClassLoader.getSystemResource("background.jpeg").toString());
         static Image player1 = new Image(ClassLoader.getSystemResource("player1.png").toString());
         static Image player2 = new Image(ClassLoader.getSystemResource("player2.png").toString());
 		static int player1score = 0, player2score = 0;
@@ -55,15 +56,23 @@ public class AdvViewer {
 		public static void widthAndHeightInterface() {
 			nValue = new TextField(); //textfield for width
 			mValue = new TextField(); //textfield for height
+			ChoiceBox<String> choicebox = new ChoiceBox<>();
+			choicebox.getItems().addAll("Beginner","Moderate", "Hard");
+			choicebox.setValue("Difficulty");
 			label1 = new Label("Enter width and height of the game below"); //description
 			button = new Button();
 			button.setText("Continue to game"); //button for applying width and height
 			
 			layout1 = new VBox(10); //layout of initialization scene 
 			layout1.setPadding(new Insets(20, 20, 20, 20)); //space from edges of the scene
-			layout1.getChildren().addAll(label1,  nValue, mValue, button); //adds button and textfield
+			layout1.getChildren().addAll(label1,  nValue, mValue,choicebox, button); //adds button and textfield
 			
-			scene1 = new Scene(layout1, 400, 180); //initialization scene with the predefined layout
+			
+			
+			
+			
+			
+			scene1 = new Scene(layout1, 400, 250); //initialization scene with the predefined layout
 		}
 		
 		
@@ -152,6 +161,7 @@ public class AdvViewer {
 	        AdvViewer.players();
 	        AdvViewer.scoreBoard();
 		}
+		
 		
 		
 
