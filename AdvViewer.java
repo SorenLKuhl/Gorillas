@@ -43,11 +43,11 @@ public class AdvViewer {
 		static Canvas canvas;
 		static GraphicsContext gc;		
 		static Image projectile = new Image(ClassLoader.getSystemResource("banana.png").toString());
-        static Image background = new Image(ClassLoader.getSystemResource("background.jpg").toString());
+        static Image background = new Image(ClassLoader.getSystemResource("background.jpeg").toString());
         static Image player1 = new Image(ClassLoader.getSystemResource("player1.png").toString());
-        static Image player2 = new Image(ClassLoader.getSystemResource("player2.png").toString());
+        static Image player2 = new Image(ClassLoader.getSystemResource("player1.png").toString());
 		static int player1score = 0, player2score = 0;
-		
+		static int player1PosY , player2PosY;
 
 
 		
@@ -108,8 +108,8 @@ public class AdvViewer {
 		}
 		
 		public static void players() {
-			gc.drawImage(player1, 0, AdvModel.m - AdvModel.playerSize, AdvModel.playerSize, AdvModel.playerSize);
-			gc.drawImage(player2, AdvModel.n-AdvModel.playerSize, AdvModel.m - AdvModel.playerSize, AdvModel.playerSize, AdvModel.playerSize);
+			gc.drawImage(player1, 0, player1PosY - AdvModel.playerSize, AdvModel.playerSize, AdvModel.playerSize);
+			gc.drawImage(player2, AdvModel.n-AdvModel.playerSize, player2PosY - AdvModel.playerSize, AdvModel.playerSize, AdvModel.playerSize);
 		}
 		
 		public static void background() {

@@ -76,7 +76,12 @@ public class AdvModel {
 	
 	public static void KasteparabelPoint(double velocity, double angle, double t, double x0) {	//Updates the position of the projectile to a given time t
         position.x = KasteparabelX(velocity, angle, t, x0);
-        position.y = KasteparabelY(velocity, angle, position.x) + AdvModel.m;
+        //position.y = KasteparabelY(velocity, angle, position.x) + SimpModel.m;
+        if(AdvController.p2Turn) {
+        	position.y = KasteparabelY(velocity, angle, position.x) + AdvViewer.player1PosY;
+        } else {
+        	position.y = KasteparabelY(velocity, angle, position.x) + AdvViewer.player2PosY;
+        }
     }
 	
 	public static void changeDir() {	//Changes the angle of the shot to fit player 2
@@ -100,7 +105,12 @@ public class AdvModel {
     }
 
 
-
+    public static void setYPos() {
+    	AdvViewer.player1PosY = (int) ((Math.random()*m)*0.5+m*0.5-playerSize);
+    	AdvViewer.player2PosY = (int) ((Math.random()*m)*0.5+m*0.5-playerSize);
+    	//System.out.println(AdvViewer.player1PosY );
+    	//System.out.println(AdvViewer.player2PosY );
+    }
 
 
 }

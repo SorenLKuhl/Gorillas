@@ -33,11 +33,10 @@ public class AdvController {
 		AdvViewer.button.setOnAction(e -> { //sets the dimensions of the game and checks if the values are valid
 			if (AdvModel.isPosInt(AdvViewer.nValue) && AdvModel.isPosInt(AdvViewer.mValue) == true) {
 				AdvViewer.angleAndVelocityInterface();
-				
+				AdvModel.setYPos();
 				stage.setScene(AdvViewer.scene2); //sets game scene
 				AdvViewer.drawMap();
 				button2();
-				
 			}
 		});
 	}
@@ -50,10 +49,10 @@ public class AdvController {
 				AdvModel.angleShoot = Math.toRadians(Double.parseDouble(AdvViewer.angle.getText()));
 				AdvModel.velocityShoot = Double.parseDouble(AdvViewer.velocity.getText());
 				if(p2Turn) {
-                    AdvModel.changeDir();
+					AdvModel.changeDir();
                 	}
                 else {
-                    AdvModel.x0 = 0;
+                	AdvModel.x0 = 0;
                 	}
 				drawProjectile();
 				newTurn();
@@ -81,31 +80,27 @@ public class AdvController {
 	}
 	
 	public static void newTurn() {
-        if(p1Turn) {
-            p1Turn = false;
-            p2Turn = true;
-        }
-        else {
-            p1Turn = true;
-            p2Turn = false;
-        }
+         p1Turn = !p1Turn;
+         p2Turn = !p2Turn;
         AdvViewer.drawMap();
     }
 	
 	public static boolean checkCollision() {
+		System.out.println(AdvViewer.player1PosY);
+		System.out.println(AdvModel.position.y);
 		if(AdvModel.ifIntersectBorder() == true) {
             AdvViewer.playerTurnText();
             return true;
         }
         if(p2Turn) {
-            if(AdvModel.collision(AdvModel.n-1,AdvModel.m)) {
+            if(AdvModel.collision(AdvModel.n-1,AdvViewer.player2PosY)) {
             	AdvViewer.player1score++;
             	AdvViewer.hitText();
             	return true;
             }
         }
         else if(p1Turn) {
-            if(AdvModel.collision(0,AdvModel.m)) {
+            if(AdvModel.collision(0,AdvViewer.player1PosY)) {
             	AdvViewer.player2score++;
             	AdvViewer.hitText();
             	return true;
