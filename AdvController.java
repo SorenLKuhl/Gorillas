@@ -25,17 +25,17 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 
-public class SimpController {
+public class AdvController {
 	
 	static boolean p1Turn = true, p2Turn = false;
 	
 	public static void button1(Stage stage) {
-		SimpViewer.button.setOnAction(e -> { //sets the dimensions of the game and checks if the values are valid
-			if (SimpModel.isPosInt(SimpViewer.nValue) && SimpModel.isPosInt(SimpViewer.mValue) == true) {
-				SimpViewer.angleAndVelocityInterface();
+		AdvViewer.button.setOnAction(e -> { //sets the dimensions of the game and checks if the values are valid
+			if (AdvModel.isPosInt(AdvViewer.nValue) && AdvModel.isPosInt(AdvViewer.mValue) == true) {
+				AdvViewer.angleAndVelocityInterface();
 				
-				stage.setScene(SimpViewer.scene2); //sets game scene
-				SimpViewer.drawMap();
+				stage.setScene(AdvViewer.scene2); //sets game scene
+				AdvViewer.drawMap();
 				button2();
 				
 			}
@@ -44,16 +44,16 @@ public class SimpController {
 	
 	public static void button2() {
 		//assigns value to angleShoot and velocityShoot if the entered values are valid
-		SimpViewer.button2.setOnAction(event -> { 
+		AdvViewer.button2.setOnAction(event -> { 
 					
-			if(SimpModel.isValidAngle(SimpViewer.angle) && SimpModel.isPosDouble(SimpViewer.velocity)) {
-				SimpModel.angleShoot = Math.toRadians(Double.parseDouble(SimpViewer.angle.getText()));
-				SimpModel.velocityShoot = Double.parseDouble(SimpViewer.velocity.getText());
+			if(AdvModel.isValidAngle(AdvViewer.angle) && AdvModel.isPosDouble(AdvViewer.velocity)) {
+				AdvModel.angleShoot = Math.toRadians(Double.parseDouble(AdvViewer.angle.getText()));
+				AdvModel.velocityShoot = Double.parseDouble(AdvViewer.velocity.getText());
 				if(p2Turn) {
-                    SimpModel.changeDir();
+                    AdvModel.changeDir();
                 	}
                 else {
-                    SimpModel.x0 = 0;
+                    AdvModel.x0 = 0;
                 	}
 				drawProjectile();
 				newTurn();
@@ -65,9 +65,9 @@ public class SimpController {
 		new AnimationTimer() {
 			double t = 0;
             public void handle(long currentNanoTime) {
-            	SimpViewer.drawMap();
-            	SimpModel.KasteparabelPoint(SimpModel.velocityShoot,SimpModel.angleShoot, t, SimpModel.x0);
-            	SimpViewer.projectile();
+            	AdvViewer.drawMap();
+            	AdvModel.KasteparabelPoint(AdvModel.velocityShoot,AdvModel.angleShoot, t, AdvModel.x0);
+            	AdvViewer.projectile();
             	t += 0.10;
 
             	if (checkCollision()) {
@@ -89,25 +89,25 @@ public class SimpController {
             p1Turn = true;
             p2Turn = false;
         }
-        SimpViewer.drawMap();
+        AdvViewer.drawMap();
     }
 	
 	public static boolean checkCollision() {
-		if(SimpModel.ifIntersectBorder() == true) {
-            SimpViewer.playerTurnText();
+		if(AdvModel.ifIntersectBorder() == true) {
+            AdvViewer.playerTurnText();
             return true;
         }
         if(p2Turn) {
-            if(SimpModel.collision(SimpModel.n-1,SimpModel.m)) {
-            	SimpViewer.player1score++;
-            	SimpViewer.hitText();
+            if(AdvModel.collision(AdvModel.n-1,AdvModel.m)) {
+            	AdvViewer.player1score++;
+            	AdvViewer.hitText();
             	return true;
             }
         }
         else if(p1Turn) {
-            if(SimpModel.collision(0,SimpModel.m)) {
-            	SimpViewer.player2score++;
-            	SimpViewer.hitText();
+            if(AdvModel.collision(0,AdvModel.m)) {
+            	AdvViewer.player2score++;
+            	AdvViewer.hitText();
             	return true;
             }
         }

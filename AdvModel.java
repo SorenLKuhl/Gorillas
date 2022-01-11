@@ -4,7 +4,7 @@ import java.awt.Point;
 
 import javafx.scene.control.TextField;
 
-public class SimpModel {
+public class AdvModel {
 	public static double angleShoot, velocityShoot;
 	public static int m, n, playerSize, x0 = 0;
 	static Vector position = new Vector();
@@ -76,7 +76,7 @@ public class SimpModel {
 	
 	public static void KasteparabelPoint(double velocity, double angle, double t, double x0) {	//Updates the position of the projectile to a given time t
         position.x = KasteparabelX(velocity, angle, t, x0);
-        position.y = KasteparabelY(velocity, angle, position.x) + SimpModel.m;
+        position.y = KasteparabelY(velocity, angle, position.x) + AdvModel.m;
     }
 	
 	public static void changeDir() {	//Changes the angle of the shot to fit player 2

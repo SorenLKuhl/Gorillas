@@ -23,7 +23,7 @@ import javafx.util.Callback;
 import javafx.scene.image.Image;
 
 
-public class SimpGorillas extends Application {
+public class AdvGorillas extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -33,11 +33,11 @@ public class SimpGorillas extends Application {
         Image icon = new Image(ClassLoader.getSystemResource("banana.png").toString());
         primaryStage.getIcons().add(icon);
 		
-		SimpViewer.widthAndHeightInterface();
+		AdvViewer.widthAndHeightInterface();
 
-		SimpController.button1(primaryStage);
+		AdvController.button1(primaryStage);
 		
-		primaryStage.setScene(SimpViewer.scene1);
+		primaryStage.setScene(AdvViewer.scene1);
 		primaryStage.setResizable(false);
 		primaryStage.show();
 	}

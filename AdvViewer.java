@@ -30,7 +30,7 @@ import javafx.scene.text.Font;
 
 import javafx.animation.*;
 
-public class SimpViewer {
+public class AdvViewer {
 		
 	
 		static TextField nValue, mValue, angle, velocity;
@@ -43,9 +43,9 @@ public class SimpViewer {
 		static Canvas canvas;
 		static GraphicsContext gc;		
 		static Image projectile = new Image(ClassLoader.getSystemResource("banana.png").toString());
-        static Image background = new Image(ClassLoader.getSystemResource("background.jpeg").toString());
+        static Image background = new Image(ClassLoader.getSystemResource("background.jpg").toString());
         static Image player1 = new Image(ClassLoader.getSystemResource("player1.png").toString());
-        static Image player2 = new Image(ClassLoader.getSystemResource("player1.png").toString());
+        static Image player2 = new Image(ClassLoader.getSystemResource("player2.png").toString());
 		static int player1score = 0, player2score = 0;
 		
 
@@ -68,13 +68,13 @@ public class SimpViewer {
 		
 		
 		public static void angleAndVelocityInterface() {
-			SimpModel.n = Integer.parseInt(nValue.getText());
-			SimpModel.m = Integer.parseInt(mValue.getText());
-			SimpModel.playerSize = SimpModel.n / 50;
+			AdvModel.n = Integer.parseInt(nValue.getText());
+			AdvModel.m = Integer.parseInt(mValue.getText());
+			AdvModel.playerSize = AdvModel.n / 50;
 			
 			group = new Group(); //layout of game
 			
-			canvas = new Canvas(SimpModel.n,SimpModel.m);
+			canvas = new Canvas(AdvModel.n,AdvModel.m);
 			gc = canvas.getGraphicsContext2D();
 			
 			vbox = new VBox(10);
@@ -104,27 +104,27 @@ public class SimpViewer {
 		}
 		
 		public static void projectile() {	
-			gc.drawImage(projectile, SimpModel.position.x - (SimpModel.n/70)/2, SimpModel.position.y - (SimpModel.n/70)/2, SimpModel.n/70, SimpModel.n/70);
+			gc.drawImage(projectile, AdvModel.position.x - (AdvModel.n/70)/2, AdvModel.position.y - (AdvModel.n/70)/2, AdvModel.n/70, AdvModel.n/70);
 		}
 		
 		public static void players() {
-			gc.drawImage(player1, 0, SimpModel.m - SimpModel.playerSize, SimpModel.playerSize, SimpModel.playerSize);
-			gc.drawImage(player2, SimpModel.n-SimpModel.playerSize, SimpModel.m - SimpModel.playerSize, SimpModel.playerSize, SimpModel.playerSize);
+			gc.drawImage(player1, 0, AdvModel.m - AdvModel.playerSize, AdvModel.playerSize, AdvModel.playerSize);
+			gc.drawImage(player2, AdvModel.n-AdvModel.playerSize, AdvModel.m - AdvModel.playerSize, AdvModel.playerSize, AdvModel.playerSize);
 		}
 		
 		public static void background() {
-            gc.drawImage(background, 0, 0, SimpModel.n, SimpModel.m);
+            gc.drawImage(background, 0, 0, AdvModel.n, AdvModel.m);
         }
 		
 		public static void playerTurnText() {
 			gc.setFont(new Font(30));
 			gc.setFill(Color.rgb(5,184,255));
 			
-			if(SimpController.p1Turn) {
-				gc.fillText("Player 2 missed! Player 1's turn to shoot!", SimpModel.n/3, SimpModel.m/6);
+			if(AdvController.p1Turn) {
+				gc.fillText("Player 2 missed! Player 1's turn to shoot!", AdvModel.n/3, AdvModel.m/6);
 			}
 			else {
-				gc.fillText("Player 1 missed! Player 2's turn to shoot!", SimpModel.n/3, SimpModel.m/6);
+				gc.fillText("Player 1 missed! Player 2's turn to shoot!", AdvModel.n/3, AdvModel.m/6);
 				
 			}
 		}
@@ -132,11 +132,11 @@ public class SimpViewer {
 		public static void hitText() {
 			gc.setFont(new Font(30));
 			gc.setFill(Color.GREEN);
-			if(SimpController.p1Turn) {
-				gc.fillText("Player 2's banana hit!", SimpModel.n/2, SimpModel.m/6);
+			if(AdvController.p1Turn) {
+				gc.fillText("Player 2's banana hit!", AdvModel.n/2, AdvModel.m/6);
 			}
 			else {
-				gc.fillText("Player 1's banana hit!", SimpModel.n/2, SimpModel.m/6);
+				gc.fillText("Player 1's banana hit!", AdvModel.n/2, AdvModel.m/6);
 				
 			}
 		}
@@ -144,13 +144,13 @@ public class SimpViewer {
 		public static void scoreBoard() {
 			gc.setFont(new Font(30));
 			gc.setFill(Color.BLACK);
-			gc.fillText(player1score + " | " +  player2score, SimpModel.n/2, SimpModel.m/16);
+			gc.fillText(player1score + " | " +  player2score, AdvModel.n/2, AdvModel.m/16);
 		}
 		
 		public static void drawMap() {
-	        SimpViewer.background();
-	        SimpViewer.players();
-	        SimpViewer.scoreBoard();
+	        AdvViewer.background();
+	        AdvViewer.players();
+	        AdvViewer.scoreBoard();
 		}
 		
 		
