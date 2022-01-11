@@ -42,6 +42,8 @@ public class AdvController {
 				AdvModel.setProjectileSize(AdvModel.n/70); 
 				stage.setScene(AdvViewer.scene2); //sets game scene
 				AdvViewer.drawMap();
+				AdvModel.adddAceleration();
+				AdvViewer.drawAceleration();
 				button2();
 			}
 		});
@@ -61,6 +63,7 @@ public class AdvController {
                 	AdvModel.x0 = AdvModel.playerSize/2;
                 	}
 				drawProjectile();
+				
 				newTurn();
 			}
 		});
@@ -71,16 +74,17 @@ public class AdvController {
 			double t = 0;
             public void handle(long currentNanoTime) {
             	AdvViewer.drawMap();
-            	AdvModel.KasteparabelPoint(AdvModel.velocityShoot,AdvModel.angleShoot, t, AdvModel.x0);
+            	AdvModel.KasteparabelPoint(AdvModel.velocityShoot,AdvModel.angleShoot, t, AdvModel.x0, AdvModel.acceleration);
             	AdvViewer.projectile();
             	t += 0.10;
 
             	if (checkCollision()) {
-            		playSound("src\\splat.wav");
+            		playSound("src/splat.wav");
             		System.out.println(AdvModel.player1PosY);
             		System.out.println(AdvModel.player2PosY);
             		System.out.println(AdvModel.position.y);
-            		
+            		AdvModel.adddAceleration();
+            		AdvViewer.drawAceleration();
             		stop();
             	}
             	
@@ -102,14 +106,14 @@ public class AdvController {
             return true;
         }
         if(p2Turn) {
-            if(AdvModel.collision(AdvModel.n-AdvModel.playerSize/2,AdvModel.m - AdvModel.player2PosY - AdvModel.playerSize/2)) {
+            if(AdvModel.collision(AdvModel.n-AdvModel.playerSize/2,AdvModel.m - AdvModel.player2PosY)) {
             	AdvViewer.player1score++;
             	AdvViewer.hitText();
             	return true;
             }
         }
         else if(p1Turn) {
-            if(AdvModel.collision(AdvModel.playerSize/2,AdvModel.m - AdvModel.player1PosY - AdvModel.playerSize/2)) {
+            if(AdvModel.collision(AdvModel.playerSize/2,AdvModel.m - AdvModel.player1PosY)) {
             	AdvViewer.player2score++;
             	AdvViewer.hitText();
             	return true;

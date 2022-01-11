@@ -44,9 +44,9 @@ public class AdvViewer {
 		static Canvas canvas;
 		static GraphicsContext gc;		
 		static Image projectile = new Image(ClassLoader.getSystemResource("banana.png").toString());
-        static Image background = new Image(ClassLoader.getSystemResource("background.jpg").toString());
+        static Image background = new Image(ClassLoader.getSystemResource("background.jpeg").toString());
         static Image player1 = new Image(ClassLoader.getSystemResource("player1.png").toString());
-        static Image player2 = new Image(ClassLoader.getSystemResource("player2.png").toString());
+        static Image player2 = new Image(ClassLoader.getSystemResource("player1.png").toString());
         static ChoiceBox<String> choicebox = new ChoiceBox<>();
 		static int player1score = 0, player2score = 0;
 		
@@ -137,7 +137,6 @@ public class AdvViewer {
 				
 			}
 		}
-		
 		public static void hitText() {
 			gc.setFont(new Font(30));
 			gc.setFill(Color.GREEN);
@@ -161,6 +160,12 @@ public class AdvViewer {
 	        AdvViewer.players();
 	        AdvViewer.scoreBoard();
 		}
+		public static void drawAceleration() {
+			gc.setFont(new Font(30));
+			gc.setFill(Color.rgb(5,184,255));
+			gc.fillText("Wind: " + AdvModel.acceleration,AdvModel.n*3/4, AdvModel.m/16);
+		}
+		
 		
 		
 		

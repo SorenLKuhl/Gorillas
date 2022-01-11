@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 
 public class AdvModel {
 	public static double angleShoot, velocityShoot;
-	public static int m, n, playerSize, x0 = 0, player1PosY , player2PosY, projectileSize;
+	public static int m, n, playerSize, x0 = 0, player1PosY , player2PosY, projectileSize, acceleration;
 	static Vector position = new Vector();
 	public static String difficulty;
 	
@@ -75,7 +75,7 @@ public class AdvModel {
 		return velocity*Math.cos(angle)*t+x0;
 	}
 	
-	public static void KasteparabelPoint(double velocity, double angle, double t, double x0) {	//Updates the position of the projectile to a given time t
+	public static void KasteparabelPoint(double velocity, double angle, double t, double x0, double a) {	//Updates the position of the projectile to a given time t
         position.x = KasteparabelX(velocity, angle, t, x0);
         //position.y = KasteparabelY(velocity, angle, position.x) + SimpModel.m;
         if(AdvController.p2Turn) {
@@ -83,6 +83,11 @@ public class AdvModel {
         } else {
         	position.y = KasteparabelY(velocity, angle, position.x) + m - player2PosY - playerSize/2;
         }
+        
+		if(difficulty.equals("Moderate") || difficulty.equals("Hard")) {
+			position.x = (velocity+a*t)*Math.cos(angle)*t+x0;
+		}
+        
     }
 	
 	public static void changeDir() {	//Changes the angle of the shot to fit player 2
@@ -125,6 +130,13 @@ public class AdvModel {
         }
         
     }
-
+    public static void adddAceleration() {
+    	if(difficulty.equals("Moderate")) {
+    		acceleration = (int) (Math.random() * 10 - 5);
+    	}
+    	else if(difficulty.equals("Hard")) {
+    		acceleration = (int) (Math.random() * 20 - 10);
+    	}
+    }
 
 }
