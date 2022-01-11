@@ -24,6 +24,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javax.sound.sampled.*;
+import java.io.File;
+
 
 
 public class AdvController {
@@ -54,7 +57,7 @@ public class AdvController {
 					AdvModel.changeDir();
                 	}
                 else {
-                	AdvModel.x0 = 0;
+                	AdvModel.x0 = AdvModel.playerSize/2;
                 	}
 				drawProjectile();
 				newTurn();
@@ -72,6 +75,7 @@ public class AdvController {
             	t += 0.10;
 
             	if (checkCollision()) {
+            		playSound("src\\splat.wav");
             		stop();
             	}
             	
@@ -109,6 +113,19 @@ public class AdvController {
         return false;
         
 	}
+	
+    public static void playSound(String path) {
+        try {
+            AudioInputStream input = AudioSystem.getAudioInputStream(new File(path).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(input);
+            clip.start();
+        }
+        catch(Exception e) {
+            System.out.println("Error: Could not play music");
+            e.printStackTrace();
+        }
+    }
 	
 }
 	        

@@ -78,15 +78,15 @@ public class AdvModel {
         position.x = KasteparabelX(velocity, angle, t, x0);
         //position.y = KasteparabelY(velocity, angle, position.x) + SimpModel.m;
         if(AdvController.p2Turn) {
-        	position.y = KasteparabelY(velocity, angle, position.x) + player1PosY;
+        	position.y = KasteparabelY(velocity, angle, position.x) + m - player1PosY - playerSize/2;
         } else {
-        	position.y = KasteparabelY(velocity, angle, position.x) + player2PosY;
+        	position.y = KasteparabelY(velocity, angle, position.x) + m - player2PosY - playerSize/2;
         }
     }
 	
 	public static void changeDir() {	//Changes the angle of the shot to fit player 2
         angleShoot = Math.PI - angleShoot;
-        x0 = n;
+        x0 = n - playerSize/2;
     }
 	
 	public static boolean ifIntersectBorder() {	//Checks if the position of the projectile intersects the border of the screen
