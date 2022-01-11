@@ -34,6 +34,7 @@ public class AdvController {
 			if (AdvModel.isPosInt(AdvViewer.nValue) && AdvModel.isPosInt(AdvViewer.mValue) == true) {
 				AdvViewer.angleAndVelocityInterface();
 				AdvModel.setYPos();
+				AdvModel.setProjectileSize(AdvModel.n/70); 
 				stage.setScene(AdvViewer.scene2); //sets game scene
 				AdvViewer.drawMap();
 				button2();
@@ -91,14 +92,14 @@ public class AdvController {
             return true;
         }
         if(p2Turn) {
-            if(AdvModel.collision(AdvModel.n-1,AdvModel.player2PosY)) {
+            if(AdvModel.collision(AdvModel.n-AdvModel.playerSize/2,AdvModel.player2PosY)) {
             	AdvViewer.player1score++;
             	AdvViewer.hitText();
             	return true;
             }
         }
         else if(p1Turn) {
-            if(AdvModel.collision(0,AdvModel.player1PosY)) {
+            if(AdvModel.collision(AdvModel.playerSize/2,AdvModel.player1PosY)) {
             	AdvViewer.player2score++;
             	AdvViewer.hitText();
             	return true;

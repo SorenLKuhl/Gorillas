@@ -104,7 +104,7 @@ public class AdvViewer {
 		}
 		
 		public static void projectile() {	
-			gc.drawImage(projectile, AdvModel.position.x - (AdvModel.n/70)/2, AdvModel.position.y - (AdvModel.n/70)/2, AdvModel.n/70, AdvModel.n/70);
+			gc.drawImage(projectile, AdvModel.position.x - (AdvModel.projectileSize)/2, AdvModel.position.y - (AdvModel.projectileSize)/2, AdvModel.projectileSize, AdvModel.projectileSize);
 		}
 		
 		public static void players() {

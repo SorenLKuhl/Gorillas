@@ -6,9 +6,8 @@ import javafx.scene.control.TextField;
 
 public class AdvModel {
 	public static double angleShoot, velocityShoot;
-	public static int m, n, playerSize, x0 = 0;
+	public static int m, n, playerSize, x0 = 0, player1PosY , player2PosY, projectileSize;
 	static Vector position = new Vector();
-	static int player1PosY , player2PosY;
 	
 	public static boolean isValidAngle(TextField in) {		//Checks if the userinput is a valid angle
 		try {
@@ -102,13 +101,17 @@ public class AdvModel {
     }
     
     public static boolean collision(double x2, double y2) {//Checks if the projectile is within "hit distance" of the given point
-        return ( dist(x2,y2) < (n/50) );
+        return ( dist(x2,y2) < projectileSize );
     }
 
 
     public static void setYPos() {
     	player1PosY = (int) ((Math.random()*m)*0.5+m*0.5-playerSize);
     	player2PosY = (int) ((Math.random()*m)*0.5+m*0.5-playerSize);
+    }
+    
+    public static void setProjectileSize(int newSize) {
+    	projectileSize = newSize;
     }
 
 
