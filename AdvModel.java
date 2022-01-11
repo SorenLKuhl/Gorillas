@@ -1,13 +1,14 @@
 package Gorillas;
 
 import java.awt.Point;
-
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
 public class AdvModel {
 	public static double angleShoot, velocityShoot;
 	public static int m, n, playerSize, x0 = 0, player1PosY , player2PosY, projectileSize;
 	static Vector position = new Vector();
+	public static String difficulty;
 	
 	public static boolean isValidAngle(TextField in) {		//Checks if the userinput is a valid angle
 		try {
@@ -106,12 +107,23 @@ public class AdvModel {
 
 
     public static void setYPos() {
-    	player1PosY = (int) ((Math.random()*m)*0.5+m*0.5-playerSize);
-    	player2PosY = (int) ((Math.random()*m)*0.5+m*0.5-playerSize);
+    	player1PosY = (int) ((Math.random()*m)*0.5-playerSize);
+    	player2PosY = (int) ((Math.random()*m)*0.5-playerSize);
     }
     
     public static void setProjectileSize(int newSize) {
     	projectileSize = newSize;
+    }
+    
+    public static boolean checkChoice() { //Checks if the userinput is a double
+        String s = AdvViewer.choicebox.getValue();
+        if (s.equals("Beginner") || s.equals("Moderate") || s.equals("Hard")) {
+            return true;
+        }
+        else {
+            return false;
+        }
+        
     }
 
 

@@ -47,6 +47,7 @@ public class AdvViewer {
         static Image background = new Image(ClassLoader.getSystemResource("background.jpg").toString());
         static Image player1 = new Image(ClassLoader.getSystemResource("player1.png").toString());
         static Image player2 = new Image(ClassLoader.getSystemResource("player2.png").toString());
+        static ChoiceBox<String> choicebox = new ChoiceBox<>();
 		static int player1score = 0, player2score = 0;
 		
 
@@ -56,7 +57,6 @@ public class AdvViewer {
 		public static void widthAndHeightInterface() {
 			nValue = new TextField(); //textfield for width
 			mValue = new TextField(); //textfield for height
-			ChoiceBox<String> choicebox = new ChoiceBox<>();
 			choicebox.getItems().addAll("Beginner","Moderate", "Hard");
 			choicebox.setValue("Difficulty");
 			label1 = new Label("Enter width and height of the game below"); //description
@@ -118,7 +118,7 @@ public class AdvViewer {
 		
 		public static void players() {
 			gc.drawImage(player1, 0, AdvModel.m - AdvModel.player1PosY - AdvModel.playerSize/2, AdvModel.playerSize, AdvModel.playerSize);
-			gc.drawImage(player2, AdvModel.n-AdvModel.playerSize, AdvModel.m - AdvModel.player2PosY - AdvModel.playerSize/2, AdvModel.playerSize, AdvModel.playerSize);
+			gc.drawImage(player2, AdvModel.n - AdvModel.playerSize, AdvModel.m - AdvModel.player2PosY - AdvModel.playerSize/2, AdvModel.playerSize, AdvModel.playerSize);
 		}
 		
 		public static void background() {

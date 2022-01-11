@@ -35,7 +35,8 @@ public class AdvController {
 	
 	public static void button1(Stage stage) {
 		AdvViewer.button.setOnAction(e -> { //sets the dimensions of the game and checks if the values are valid
-			if (AdvModel.isPosInt(AdvViewer.nValue) && AdvModel.isPosInt(AdvViewer.mValue)  == true) {
+			if (AdvModel.isPosInt(AdvViewer.nValue) && AdvModel.isPosInt(AdvViewer.mValue)  == true && AdvModel.checkChoice()) {
+				AdvModel.difficulty = AdvViewer.choicebox.getValue();
 				AdvViewer.angleAndVelocityInterface();
 				AdvModel.setYPos();
 				AdvModel.setProjectileSize(AdvModel.n/70); 
@@ -76,6 +77,10 @@ public class AdvController {
 
             	if (checkCollision()) {
             		playSound("src\\splat.wav");
+            		System.out.println(AdvModel.player1PosY);
+            		System.out.println(AdvModel.player2PosY);
+            		System.out.println(AdvModel.position.y);
+            		
             		stop();
             	}
             	
@@ -97,14 +102,14 @@ public class AdvController {
             return true;
         }
         if(p2Turn) {
-            if(AdvModel.collision(AdvModel.n-AdvModel.playerSize/2,AdvModel.player2PosY)) {
+            if(AdvModel.collision(AdvModel.n-AdvModel.playerSize/2,AdvModel.m - AdvModel.player2PosY - AdvModel.playerSize/2)) {
             	AdvViewer.player1score++;
             	AdvViewer.hitText();
             	return true;
             }
         }
         else if(p1Turn) {
-            if(AdvModel.collision(AdvModel.playerSize/2,AdvModel.player1PosY)) {
+            if(AdvModel.collision(AdvModel.playerSize/2,AdvModel.m - AdvModel.player1PosY - AdvModel.playerSize/2)) {
             	AdvViewer.player2score++;
             	AdvViewer.hitText();
             	return true;
