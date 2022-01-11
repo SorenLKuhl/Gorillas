@@ -8,6 +8,7 @@ public class AdvModel {
 	public static double angleShoot, velocityShoot;
 	public static int m, n, playerSize, x0 = 0;
 	static Vector position = new Vector();
+	static int player1PosY , player2PosY;
 	
 	public static boolean isValidAngle(TextField in) {		//Checks if the userinput is a valid angle
 		try {
@@ -78,9 +79,9 @@ public class AdvModel {
         position.x = KasteparabelX(velocity, angle, t, x0);
         //position.y = KasteparabelY(velocity, angle, position.x) + SimpModel.m;
         if(AdvController.p2Turn) {
-        	position.y = KasteparabelY(velocity, angle, position.x) + AdvViewer.player1PosY;
+        	position.y = KasteparabelY(velocity, angle, position.x) + player1PosY;
         } else {
-        	position.y = KasteparabelY(velocity, angle, position.x) + AdvViewer.player2PosY;
+        	position.y = KasteparabelY(velocity, angle, position.x) + player2PosY;
         }
     }
 	
@@ -106,10 +107,8 @@ public class AdvModel {
 
 
     public static void setYPos() {
-    	AdvViewer.player1PosY = (int) ((Math.random()*m)*0.5+m*0.5-playerSize);
-    	AdvViewer.player2PosY = (int) ((Math.random()*m)*0.5+m*0.5-playerSize);
-    	//System.out.println(AdvViewer.player1PosY );
-    	//System.out.println(AdvViewer.player2PosY );
+    	player1PosY = (int) ((Math.random()*m)*0.5+m*0.5-playerSize);
+    	player2PosY = (int) ((Math.random()*m)*0.5+m*0.5-playerSize);
     }
 
 

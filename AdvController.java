@@ -86,21 +86,19 @@ public class AdvController {
     }
 	
 	public static boolean checkCollision() {
-		System.out.println(AdvViewer.player1PosY);
-		System.out.println(AdvModel.position.y);
 		if(AdvModel.ifIntersectBorder() == true) {
             AdvViewer.playerTurnText();
             return true;
         }
         if(p2Turn) {
-            if(AdvModel.collision(AdvModel.n-1,AdvViewer.player2PosY)) {
+            if(AdvModel.collision(AdvModel.n-1,AdvModel.player2PosY)) {
             	AdvViewer.player1score++;
             	AdvViewer.hitText();
             	return true;
             }
         }
         else if(p1Turn) {
-            if(AdvModel.collision(0,AdvViewer.player1PosY)) {
+            if(AdvModel.collision(0,AdvModel.player1PosY)) {
             	AdvViewer.player2score++;
             	AdvViewer.hitText();
             	return true;
