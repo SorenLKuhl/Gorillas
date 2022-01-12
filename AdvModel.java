@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 
 public class AdvModel {
 	public static double angleShoot, velocityShoot;
-	public static int m, n, playerSize, x0 = 0, player1PosY , player2PosY, projectileSize, acceleration;
+	public static int m, n, playerSize, x0 = 0, player1PosY , player2PosY, projectileSize, acceleration, player1PosX , player2PosX;
 	static Vector position = new Vector();
 	public static String difficulty;
 	
@@ -92,7 +92,7 @@ public class AdvModel {
 	
 	public static void changeDir() {	//Changes the angle of the shot to fit player 2
         angleShoot = Math.PI - angleShoot;
-        x0 = n - playerSize/2;
+        x0 = player2PosX;
     }
 	
 	public static boolean ifIntersectBorder() {	//Checks if the position of the projectile intersects the border of the screen
@@ -109,12 +109,18 @@ public class AdvModel {
     public static boolean collision(double x2, double y2) {//Checks if the projectile is within "hit distance" of the given point
         return ( dist(x2,y2) < projectileSize );
     }
+    
+    public static void setXPos() {
+    	player1PosX = n/10;
+    	player2PosX = n - n/10;
+    }
 
 
     public static void setYPos() {
-    	player1PosY = (int) ((Math.random()*m)*0.5-playerSize);
-    	player2PosY = (int) ((Math.random()*m)*0.5-playerSize);
+    	player1PosY = (int) ((Math.random()*m)*0.5 + playerSize);
+    	player2PosY = (int) ((Math.random()*m)*0.5 + playerSize);
     }
+    
     
     public static void setProjectileSize(int newSize) {
     	projectileSize = newSize;
@@ -130,7 +136,7 @@ public class AdvModel {
         }
         
     }
-    public static void adddAceleration() {
+    public static void addAcceleration() {
     	if(difficulty.equals("Moderate")) {
     		acceleration = (int) (Math.random() * 10 - 5);
     	}

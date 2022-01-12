@@ -38,11 +38,12 @@ public class AdvController {
 			if (AdvModel.isPosInt(AdvViewer.nValue) && AdvModel.isPosInt(AdvViewer.mValue) && AdvModel.checkChoice()) {
 				AdvModel.difficulty = AdvViewer.choicebox.getValue();
 				AdvViewer.angleAndVelocityInterface();
+				AdvModel.setXPos();
 				AdvModel.setYPos();
 				AdvModel.setProjectileSize(AdvModel.n/70); 
 				stage.setScene(AdvViewer.scene2); //sets game scene
 				AdvViewer.drawMap();
-				AdvModel.adddAceleration();
+				AdvModel.addAcceleration();
 				AdvViewer.drawAceleration();
 				button2();
 			}
@@ -64,7 +65,7 @@ public class AdvController {
 					AdvModel.changeDir();
                 	}
                 else {
-                	AdvModel.x0 = AdvModel.playerSize/2;
+                	AdvModel.x0 = AdvModel.player1PosX;
                 	}
 				drawProjectile();
 				
@@ -88,7 +89,7 @@ public class AdvController {
 
             	if (checkCollision()) {
             		playSound("src/splat.wav");
-            		AdvModel.adddAceleration();
+            		AdvModel.addAcceleration();
             		AdvViewer.drawAceleration();
             		stop();
             	}
@@ -111,14 +112,14 @@ public class AdvController {
             return true;
         }
         if(p2Turn) {
-            if(AdvModel.collision(AdvModel.n-AdvModel.playerSize/2,AdvModel.m - AdvModel.player2PosY)) {
+            if(AdvModel.collision(AdvModel.player2PosX, AdvModel.m - AdvModel.player2PosY)) {
             	AdvViewer.player1score++;
             	AdvViewer.hitText();
             	return true;
             }
         }
         else if(p1Turn) {
-            if(AdvModel.collision(AdvModel.playerSize/2,AdvModel.m - AdvModel.player1PosY)) {
+            if(AdvModel.collision(AdvModel.player1PosX, AdvModel.m - AdvModel.player1PosY)) {
             	AdvViewer.player2score++;
             	AdvViewer.hitText();
             	return true;
