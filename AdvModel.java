@@ -138,5 +138,6 @@ public class AdvModel {
     		acceleration = (int) (Math.random() * 20 - 10);
     	}
     }
+	
 
 }

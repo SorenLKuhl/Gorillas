@@ -35,7 +35,7 @@ public class AdvController {
 	
 	public static void button1(Stage stage) {
 		AdvViewer.button.setOnAction(e -> { //sets the dimensions of the game and checks if the values are valid
-			if (AdvModel.isPosInt(AdvViewer.nValue) && AdvModel.isPosInt(AdvViewer.mValue)  == true && AdvModel.checkChoice()) {
+			if (AdvModel.isPosInt(AdvViewer.nValue) && AdvModel.isPosInt(AdvViewer.mValue) && AdvModel.checkChoice()) {
 				AdvModel.difficulty = AdvViewer.choicebox.getValue();
 				AdvViewer.angleAndVelocityInterface();
 				AdvModel.setYPos();
@@ -45,6 +45,10 @@ public class AdvController {
 				AdvModel.adddAceleration();
 				AdvViewer.drawAceleration();
 				button2();
+			}
+			else {
+				AdvViewer.textFieldRed1(AdvViewer.nValue);
+				AdvViewer.textFieldRed1(AdvViewer.mValue);
 			}
 		});
 	}
@@ -66,6 +70,10 @@ public class AdvController {
 				
 				newTurn();
 			}
+			else {
+				AdvViewer.textFieldRed2();
+				
+			}
 		});
 	}
 	
@@ -80,9 +88,6 @@ public class AdvController {
 
             	if (checkCollision()) {
             		playSound("src/splat.wav");
-            		System.out.println(AdvModel.player1PosY);
-            		System.out.println(AdvModel.player2PosY);
-            		System.out.println(AdvModel.position.y);
             		AdvModel.adddAceleration();
             		AdvViewer.drawAceleration();
             		stop();
@@ -135,7 +140,8 @@ public class AdvController {
             e.printStackTrace();
         }
     }
-	
+    
+ 
 }
 	        
 

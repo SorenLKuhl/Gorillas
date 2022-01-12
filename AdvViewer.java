@@ -2,6 +2,7 @@ package Gorillas;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -166,10 +167,29 @@ public class AdvViewer {
 			gc.fillText("Wind: " + AdvModel.acceleration,AdvModel.n*3/4, AdvModel.m/16);
 		}
 		
-		
-		
-		
+		public static void textFieldRed1(TextField tf) {
+			if(!AdvModel.isPosInt(tf)) {
+				tf.setStyle("-fx-text-box-border: red;");
+			}
+			else {
+				tf.setStyle("");
+			}
 
-	
+		}
+		public static void textFieldRed2() {
+			if(!AdvModel.isValidAngle(angle)) {
+				angle.setStyle("-fx-text-box-border: red;");
+			}
+			else {
+				angle.setStyle("");
+			}
+			if(!AdvModel.isPosDouble(velocity)) {
+				velocity.setStyle("-fx-text-box-border: red;");
+			}
+			else {
+				velocity.setStyle("");
+			}
+		}
+
 	}
 
