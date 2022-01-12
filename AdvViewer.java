@@ -15,6 +15,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -101,13 +105,28 @@ public class AdvViewer {
 			button2 = new Button();
 			button2.setText("Fire!!");
 			
+			Menu fileMenu = new Menu("Menu");
+			
+			MenuItem newGame = new MenuItem("New game...");
+			newGame.setOnAction(e -> newGameButton());
+			
+			fileMenu.getItems().add(newGame);
+			
+			fileMenu.getItems().add(new SeparatorMenuItem());
+			fileMenu.getItems().add(new MenuItem("Back to game..."));
+			
+			MenuBar menuBar = new MenuBar();
+			menuBar.getMenus().addAll(fileMenu);
+
+
+			
 			//air with the borders
 			vbox.setPadding(new Insets(20,20,20,20));
 			
 			angleText = new Label("Banana angle: ");
 			velocityText = new Label("Banana velocity: ");
 			
-			vbox.getChildren().addAll(angleText, angle, velocityText, velocity, button2);
+			vbox.getChildren().addAll(menuBar, angleText, angle, velocityText, velocity, button2);
 
 			
 			group.getChildren().add(canvas);
