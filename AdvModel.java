@@ -79,9 +79,9 @@ public class AdvModel {
         position.x = KasteparabelX(velocity, angle, t, x0);
         //position.y = KasteparabelY(velocity, angle, position.x) + SimpModel.m;
         if(AdvController.p2Turn) {
-        	position.y = KasteparabelY(velocity, angle, position.x) + m - player1PosY - playerSize/2;
+        	position.y = KasteparabelY(velocity, angle, position.x) + player1PosY;
         } else {
-        	position.y = KasteparabelY(velocity, angle, position.x) + m - player2PosY - playerSize/2;
+        	position.y = KasteparabelY(velocity, angle, position.x) + player2PosY;
         }
         
 		if(difficulty.equals("Moderate") || difficulty.equals("Hard")) {
@@ -129,8 +129,8 @@ public class AdvModel {
 
 
     public static void setYPos() {
-    	player1PosY = (int) ((Math.random()*m)*0.5 + playerSize/2);
-    	player2PosY = (int) ((Math.random()*m)*0.5 + playerSize/2);
+    	player1PosY = (int) (m - (Math.random()*m)*0.5);// + playerSize/2
+    	player2PosY = (int) (m - (Math.random()*m)*0.5);// + playerSize/2
     }
     
     
@@ -148,6 +148,7 @@ public class AdvModel {
         }
         
     }
+    
     public static void addAcceleration() {
     	if(difficulty.equals("Moderate")) {
     		acceleration = (int) (Math.random() * 10 - 5);
@@ -155,6 +156,10 @@ public class AdvModel {
     	else if(difficulty.equals("Hard")) {
     		acceleration = (int) (Math.random() * 20 - 10);
     	}
+    }
+    
+    public static void setPlayerSize(int size) {
+    	playerSize = size;
     }
 	
 

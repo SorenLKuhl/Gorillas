@@ -55,6 +55,7 @@ public class AdvViewer {
         static ImageView iv = new ImageView (new Image("log.png"));
         static ChoiceBox<String> choicebox = new ChoiceBox<>();
 		static int player1score = 0, player2score = 0;
+		static MenuBar menuBar;
 		
 
 
@@ -87,8 +88,11 @@ public class AdvViewer {
 		public static void angleAndVelocityInterface() {
 			AdvModel.n = Integer.parseInt(nValue.getText());
 			AdvModel.m = Integer.parseInt(mValue.getText());
-			AdvModel.playerSize = AdvModel.n / 25;
-			
+			menu();
+			gameLayout();
+		}
+		
+		public static void gameLayout() {
 			group = new Group(); //layout of game
 			
 			canvas = new Canvas(AdvModel.n,AdvModel.m);
@@ -104,25 +108,6 @@ public class AdvViewer {
 			//"Fire!!" button
 			button2 = new Button();
 			button2.setText("Fire!!");
-			
-			Menu fileMenu = new Menu("Menu");
-			
-			MenuItem newGame = new MenuItem("New game...");
-			newGame.setOnAction(e -> {
-        		newGameButton();
-        		AdvController.button3();
-			});
-			
-			fileMenu.getItems().add(newGame);
-			
-			fileMenu.getItems().add(new SeparatorMenuItem());
-			fileMenu.getItems().add(new MenuItem("Back to game..."));
-			
-			MenuBar menuBar = new MenuBar();
-			menuBar.getMenus().addAll(fileMenu);
-
-
-			
 			//air with the borders
 			vbox.setPadding(new Insets(20,20,20,20));
 			
@@ -138,13 +123,31 @@ public class AdvViewer {
 			scene2 = new Scene(group); //game scene made with the layout predefined
 		}
 		
+		public static void menu() {
+			Menu fileMenu = new Menu("Menu");
+			
+			MenuItem newGame = new MenuItem("New game...");
+			newGame.setOnAction(e -> {
+        		newGameButton();
+        		AdvController.button3();
+			});
+			
+			fileMenu.getItems().add(newGame);
+			
+			fileMenu.getItems().add(new SeparatorMenuItem());
+			fileMenu.getItems().add(new MenuItem("Back to game..."));
+			
+			menuBar = new MenuBar();
+			menuBar.getMenus().addAll(fileMenu);
+		}
+		
 		public static void projectile() {	
 			gc.drawImage(projectile, AdvModel.position.x - (AdvModel.projectileSize)/2, AdvModel.position.y - (AdvModel.projectileSize)/2, AdvModel.projectileSize, AdvModel.projectileSize);
 		}
 		
 		public static void players() {
-			gc.drawImage(player1, AdvModel.player1PosX - AdvModel.playerSize/2 , AdvModel.m - AdvModel.player1PosY - AdvModel.playerSize/2, AdvModel.playerSize, AdvModel.playerSize);
-			gc.drawImage(player2, AdvModel.player2PosX - AdvModel.playerSize/2, AdvModel.m - AdvModel.player2PosY - AdvModel.playerSize/2, AdvModel.playerSize, AdvModel.playerSize);
+			gc.drawImage(player1, AdvModel.player1PosX - AdvModel.playerSize/2, AdvModel.player1PosY - AdvModel.playerSize/2, AdvModel.playerSize, AdvModel.playerSize);
+			gc.drawImage(player2, AdvModel.player2PosX - AdvModel.playerSize/2, AdvModel.player2PosY - AdvModel.playerSize/2, AdvModel.playerSize, AdvModel.playerSize);
 		}
 		
 		public static void background() {
@@ -194,8 +197,8 @@ public class AdvViewer {
 		
 		public static void drawMap() {
 	        background();
-	        playerPillar(AdvModel.player1PosX - AdvModel.n/20, AdvModel.m - AdvModel.player1PosY + AdvModel.playerSize/2);
-	        playerPillar(AdvModel.player2PosX - AdvModel.n/20, AdvModel.m - AdvModel.player2PosY + AdvModel.playerSize/2);
+	        playerPillar(AdvModel.player1PosX - AdvModel.n/20, AdvModel.player1PosY + AdvModel.playerSize/2);
+	        playerPillar(AdvModel.player2PosX - AdvModel.n/20, AdvModel.player2PosY + AdvModel.playerSize/2);
 	        players();
 	        scoreBoard();
 	        

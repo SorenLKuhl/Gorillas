@@ -37,21 +37,26 @@ public class AdvController {
 		AdvViewer.button.setOnAction(e -> { //sets the dimensions of the game and checks if the values are valid
 			if (AdvModel.isPosInt(AdvViewer.nValue) && AdvModel.isPosInt(AdvViewer.mValue) && AdvModel.checkChoice()) {
 				AdvModel.difficulty = AdvViewer.choicebox.getValue();
-				AdvViewer.angleAndVelocityInterface();
-				AdvModel.setXPos();
-				AdvModel.setYPos();
-				AdvModel.setProjectileSize(AdvModel.n/70); 
-				stage.setScene(AdvViewer.scene2); //sets game scene
-				AdvViewer.drawMap();
-				AdvModel.addAcceleration();
-				AdvViewer.drawAceleration();
-				button2();
+				InitializeGameInterface(stage);
 			}
 			else {
 				AdvViewer.textFieldRed1(AdvViewer.nValue);
 				AdvViewer.textFieldRed1(AdvViewer.mValue);
 			}
 		});
+	}
+	
+	public static void InitializeGameInterface(Stage stage) {
+		AdvViewer.angleAndVelocityInterface();
+		AdvModel.setXPos();
+		AdvModel.setYPos();
+		AdvModel.setProjectileSize(AdvModel.n/70);
+		AdvModel.setPlayerSize(AdvModel.n / 25);
+		stage.setScene(AdvViewer.scene2); //sets game scene
+		AdvViewer.drawMap();
+		AdvModel.addAcceleration();
+		AdvViewer.drawAceleration();
+		button2();
 	}
 	
 	public static void button2() {
@@ -120,13 +125,13 @@ public class AdvController {
             AdvViewer.playerTurnText();
             return true;
         }
-		else if (AdvModel.ifIntersectPillar(AdvModel.player1PosX - AdvModel.n/20, AdvModel.m - AdvModel.player1PosY + AdvModel.playerSize/2) || 
-				AdvModel.ifIntersectPillar(AdvModel.player2PosX - AdvModel.n/20, AdvModel.m - AdvModel.player2PosY + AdvModel.playerSize/2)) {
+		else if (AdvModel.ifIntersectPillar(AdvModel.player1PosX - AdvModel.n/20, AdvModel.player1PosY + AdvModel.playerSize/2) || 
+				 AdvModel.ifIntersectPillar(AdvModel.player2PosX - AdvModel.n/20, AdvModel.player2PosY + AdvModel.playerSize/2)) {
 			AdvViewer.playerTurnText();
 			return true;
 		}
         if(p2Turn) {
-            if(AdvModel.collision(AdvModel.player2PosX, AdvModel.m - AdvModel.player2PosY, AdvModel.playerSize)) {
+            if(AdvModel.collision(AdvModel.player2PosX,AdvModel.player2PosY, AdvModel.playerSize)) {
             	AdvViewer.player1score++;
             	if(AdvViewer.player1score == 3) {
             		AdvViewer.winText();
@@ -140,7 +145,7 @@ public class AdvController {
             }
         }
         else if(p1Turn) {
-            if(AdvModel.collision(AdvModel.player1PosX, AdvModel.m - AdvModel.player1PosY, AdvModel.playerSize)) {
+            if(AdvModel.collision(AdvModel.player1PosX,AdvModel.player1PosY, AdvModel.playerSize)) {
             	AdvViewer.player2score++;
             	if(AdvViewer.player2score == 3) {
             		AdvViewer.winText();
