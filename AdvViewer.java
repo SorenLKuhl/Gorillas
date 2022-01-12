@@ -37,7 +37,7 @@ public class AdvViewer {
 	
 		static TextField nValue, mValue, angle, velocity;
 		static Label label1, angleText, velocityText;
-		static Button button, button2;
+		static Button button, button2, button3;
 		static Scene scene1, scene2;
 		static Stage gameStage;
 		static VBox vbox, layout1;
@@ -152,6 +152,17 @@ public class AdvViewer {
 				
 			}
 		}
+		public static void winText(){
+			gc.setFont(new Font(30));
+			gc.setFill(Color.GREEN);
+			if(AdvController.p1Turn) {
+				gc.fillText("Player 2 has won the game!", AdvModel.n/2, AdvModel.m/6);
+			}
+			else {
+				gc.fillText("Player 2 has won the game!", AdvModel.n/2, AdvModel.m/6);
+				
+			}
+		}
 		
 		public static void scoreBoard() {
 			gc.setFont(new Font(30));
@@ -205,6 +216,15 @@ public class AdvViewer {
 	            
 	            gc.drawImage(rotatedImage, AdvModel.player2PosX - 60/2, AdvModel.m - AdvModel.player2PosY + AdvModel.playerSize/2, 60, AdvModel.m/2);
 	        }
+		 public static void newGameButton() {
+			 button3 = new Button();
+			 button3.setText("New Game!");
+			 button3.setLayoutX(AdvModel.n/2 - AdvModel.n/3/2);
+			 button3.setLayoutY(AdvModel.m/2 -AdvModel.m/3/2);
+			 button3.setPrefWidth(AdvModel.n/3);
+			 button3.setPrefHeight(AdvModel.m/3);
+			 group.getChildren().add(button3);
+		 }
 
 	}
 

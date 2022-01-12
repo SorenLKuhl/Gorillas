@@ -101,7 +101,7 @@ public class AdvModel {
 		}
 		return false;
 	}
-	
+
     public static double dist(double x2, double y2) {// calculates the distance between a point (most likely a player or obstacle) and the projectile
         return Math.sqrt(Math.pow((x2-position.x),2)+Math.pow((y2-position.y),2));
     }
@@ -109,8 +109,6 @@ public class AdvModel {
     public static boolean collision(double x2, double y2) {//Checks if the projectile is within "hit distance" of the given point
         return ( dist(x2,y2) < projectileSize );
     }
-    
-    
     public static boolean ifIntersectPillar( double xDim, double yDim) {
     	if ((xDim - projectileSize/2) <= position.x && (xDim + 60 + projectileSize/2) >= position.x && (yDim <= position.y)) { //
     		return true;
@@ -118,10 +116,7 @@ public class AdvModel {
     	else {
     		return false;
     	}
-    }
-    
-    
-    
+    }    
     public static void setXPos() {
     	player1PosX = n/10;
     	player2PosX = n - n/10;

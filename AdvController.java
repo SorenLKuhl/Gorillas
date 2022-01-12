@@ -77,6 +77,13 @@ public class AdvController {
 			}
 		});
 	}
+	public static void button3() {
+		AdvViewer.button3.setOnAction(event1 -> {
+			AdvGorillas.primaryStage.setScene(AdvViewer.scene1);
+			AdvViewer.player1score = 0;
+			AdvViewer.player2score = 0;
+		});
+	}
 	
 	public static void drawProjectile() {
 		new AnimationTimer() {
@@ -119,14 +126,28 @@ public class AdvController {
         if(p2Turn) {
             if(AdvModel.collision(AdvModel.player2PosX, AdvModel.m - AdvModel.player2PosY)) {
             	AdvViewer.player1score++;
-            	AdvViewer.hitText();
+            	if(AdvViewer.player1score == 3) {
+            		AdvViewer.winText();
+            		AdvViewer.newGameButton();
+            		button3();
+            	}
+            	else {
+            		AdvViewer.hitText();
+            	}
             	return true;
             }
         }
         else if(p1Turn) {
             if(AdvModel.collision(AdvModel.player1PosX, AdvModel.m - AdvModel.player1PosY)) {
             	AdvViewer.player2score++;
-            	AdvViewer.hitText();
+            	if(AdvViewer.player2score == 3) {
+            		AdvViewer.winText();
+            		AdvViewer.newGameButton();
+            		button3();
+            	}
+            	else {
+            		AdvViewer.hitText();
+            	}
             	return true;
             }
         }

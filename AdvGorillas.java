@@ -23,18 +23,22 @@ import javafx.util.Callback;
 import javafx.scene.image.Image;
 
 
-public class AdvGorillas extends Application {
+public class AdvGorillas extends Application {	
+	public static Stage primaryStage;
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		AdvGorillas.primaryStage = primaryStage;
 		primaryStage.setTitle("Gorillas"); //stage
         Image icon = new Image(ClassLoader.getSystemResource("banana.png").toString());
         primaryStage.getIcons().add(icon);
 		AdvViewer.widthAndHeightInterface();
 		AdvController.button1(primaryStage);
 		
+
 		
 		primaryStage.setScene(AdvViewer.scene1);
 		primaryStage.setResizable(false);
