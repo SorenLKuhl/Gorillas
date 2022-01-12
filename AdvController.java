@@ -120,13 +120,13 @@ public class AdvController {
             AdvViewer.playerTurnText();
             return true;
         }
-		else if (AdvModel.ifIntersectPillar(AdvModel.player1PosX - 60/2, AdvModel.m - AdvModel.player1PosY + AdvModel.playerSize/2) || 
-				AdvModel.ifIntersectPillar(AdvModel.player2PosX - 60/2, AdvModel.m - AdvModel.player2PosY + AdvModel.playerSize/2)) {
+		else if (AdvModel.ifIntersectPillar(AdvModel.player1PosX - AdvModel.n/20, AdvModel.m - AdvModel.player1PosY + AdvModel.playerSize/2) || 
+				AdvModel.ifIntersectPillar(AdvModel.player2PosX - AdvModel.n/20, AdvModel.m - AdvModel.player2PosY + AdvModel.playerSize/2)) {
 			AdvViewer.playerTurnText();
 			return true;
 		}
         if(p2Turn) {
-            if(AdvModel.collision(AdvModel.player2PosX, AdvModel.m - AdvModel.player2PosY)) {
+            if(AdvModel.collision(AdvModel.player2PosX, AdvModel.m - AdvModel.player2PosY, AdvModel.playerSize)) {
             	AdvViewer.player1score++;
             	if(AdvViewer.player1score == 3) {
             		AdvViewer.winText();
@@ -140,7 +140,7 @@ public class AdvController {
             }
         }
         else if(p1Turn) {
-            if(AdvModel.collision(AdvModel.player1PosX, AdvModel.m - AdvModel.player1PosY)) {
+            if(AdvModel.collision(AdvModel.player1PosX, AdvModel.m - AdvModel.player1PosY, AdvModel.playerSize)) {
             	AdvViewer.player2score++;
             	if(AdvViewer.player2score == 3) {
             		AdvViewer.winText();

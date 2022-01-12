@@ -109,8 +109,13 @@ public class AdvModel {
     public static boolean collision(double x2, double y2) {//Checks if the projectile is within "hit distance" of the given point
         return ( dist(x2,y2) < projectileSize );
     }
+    
+    public static boolean collision(double x2, double y2, int objectSize) {//Checks if the projectile is within "hit distance" of the given point
+        return ( dist(x2,y2) < objectSize/2 + projectileSize );
+    }
+    
     public static boolean ifIntersectPillar( double xDim, double yDim) {
-    	if ((xDim - projectileSize/2) <= position.x && (xDim + 60 + projectileSize/2) >= position.x && (yDim <= position.y)) { //
+    	if ((xDim - projectileSize/2) <= position.x && (xDim + n/10 + projectileSize/2) >= position.x && (yDim <= position.y)) { //
     		return true;
     	}
     	else {
@@ -124,8 +129,8 @@ public class AdvModel {
 
 
     public static void setYPos() {
-    	player1PosY = (int) ((Math.random()*m)*0.5 + playerSize);
-    	player2PosY = (int) ((Math.random()*m)*0.5 + playerSize);
+    	player1PosY = (int) ((Math.random()*m)*0.5 + playerSize/2);
+    	player2PosY = (int) ((Math.random()*m)*0.5 + playerSize/2);
     }
     
     

@@ -49,7 +49,7 @@ public class AdvViewer {
 		static Canvas canvas;
 		static GraphicsContext gc;		
 		static Image projectile = new Image(ClassLoader.getSystemResource("banana.png").toString());
-        static Image background = new Image(ClassLoader.getSystemResource("background.jpeg").toString());
+        static Image background = new Image(ClassLoader.getSystemResource("background.jpg").toString());
         static Image player1 = new Image(ClassLoader.getSystemResource("player1.png").toString());
         static Image player2 = new Image(ClassLoader.getSystemResource("player2.png").toString());
         static ImageView iv = new ImageView (new Image("log.png"));
@@ -87,7 +87,7 @@ public class AdvViewer {
 		public static void angleAndVelocityInterface() {
 			AdvModel.n = Integer.parseInt(nValue.getText());
 			AdvModel.m = Integer.parseInt(mValue.getText());
-			AdvModel.playerSize = AdvModel.n / 50;
+			AdvModel.playerSize = AdvModel.n / 25;
 			
 			group = new Group(); //layout of game
 			
@@ -194,7 +194,8 @@ public class AdvViewer {
 		
 		public static void drawMap() {
 	        background();
-	        playerPillar();
+	        playerPillar(AdvModel.player1PosX - AdvModel.n/20, AdvModel.m - AdvModel.player1PosY + AdvModel.playerSize/2);
+	        playerPillar(AdvModel.player2PosX - AdvModel.n/20, AdvModel.m - AdvModel.player2PosY + AdvModel.playerSize/2);
 	        players();
 	        scoreBoard();
 	        
@@ -214,6 +215,7 @@ public class AdvViewer {
 			}
 
 		}
+		
 		public static void textFieldRed2() {
 			if(!AdvModel.isValidAngle(angle)) {
 				angle.setStyle("-fx-text-box-border: red;");
@@ -229,15 +231,14 @@ public class AdvViewer {
 			}
 		}
 		
-		 public static void playerPillar() {
+		 public static void playerPillar(int x, int y) {
 	            iv.setRotate(90);
 	            SnapshotParameters params = new SnapshotParameters();
 	            params.setFill(Color.TRANSPARENT);
 	            Image rotatedImage = iv.snapshot(params, null);
-	            gc.drawImage(rotatedImage, AdvModel.player1PosX - 60/2, AdvModel.m - AdvModel.player1PosY + AdvModel.playerSize/2, 60, AdvModel.m/2);
-	            
-	            gc.drawImage(rotatedImage, AdvModel.player2PosX - 60/2, AdvModel.m - AdvModel.player2PosY + AdvModel.playerSize/2, 60, AdvModel.m/2);
+	            gc.drawImage(rotatedImage, x, y, AdvModel.n/10, AdvModel.m/2);
 	        }
+		 
 		 public static void newGameButton() {
 			 button3 = new Button();
 			 button3.setText("New Game!");
