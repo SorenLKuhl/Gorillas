@@ -107,10 +107,15 @@ public class AdvController {
     }
 	
 	public static boolean checkCollision() {
-		if(AdvModel.ifIntersectBorder() == true) {
+		if(AdvModel.ifIntersectBorder()) {
             AdvViewer.playerTurnText();
             return true;
         }
+		else if (AdvModel.ifIntersectPillar(AdvModel.player1PosX - 60/2, AdvModel.m - AdvModel.player1PosY + AdvModel.playerSize/2) || 
+				AdvModel.ifIntersectPillar(AdvModel.player2PosX - 60/2, AdvModel.m - AdvModel.player2PosY + AdvModel.playerSize/2)) {
+			AdvViewer.playerTurnText();
+			return true;
+		}
         if(p2Turn) {
             if(AdvModel.collision(AdvModel.player2PosX, AdvModel.m - AdvModel.player2PosY)) {
             	AdvViewer.player1score++;

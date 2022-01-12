@@ -45,7 +45,7 @@ public class AdvViewer {
 		static Canvas canvas;
 		static GraphicsContext gc;		
 		static Image projectile = new Image(ClassLoader.getSystemResource("banana.png").toString());
-        static Image background = new Image(ClassLoader.getSystemResource("background.jpg").toString());
+        static Image background = new Image(ClassLoader.getSystemResource("background.jpeg").toString());
         static Image player1 = new Image(ClassLoader.getSystemResource("player1.png").toString());
         static Image player2 = new Image(ClassLoader.getSystemResource("player2.png").toString());
         static ImageView iv = new ImageView (new Image("log.png"));
@@ -160,9 +160,11 @@ public class AdvViewer {
 		}
 		
 		public static void drawMap() {
-	        AdvViewer.background();
-	        AdvViewer.players();
-	        AdvViewer.scoreBoard();
+	        background();
+	        playerPillar();
+	        players();
+	        scoreBoard();
+	        
 		}
 		public static void drawAceleration() {
 			gc.setFont(new Font(30));
@@ -199,9 +201,9 @@ public class AdvViewer {
 	            SnapshotParameters params = new SnapshotParameters();
 	            params.setFill(Color.TRANSPARENT);
 	            Image rotatedImage = iv.snapshot(params, null);
-	            gc.drawImage(rotatedImage, 0, AdvModel.m - AdvModel.player1PosY - AdvModel.playerSize/2, 50, 200);
+	            gc.drawImage(rotatedImage, AdvModel.player1PosX - 60/2, AdvModel.m - AdvModel.player1PosY + AdvModel.playerSize/2, 60, AdvModel.m/2);
 	            
-	            gc.drawImage(rotatedImage, 0, AdvModel.m - AdvModel.player1PosY - AdvModel.playerSize/2, 50, 200);
+	            gc.drawImage(rotatedImage, AdvModel.player2PosX - 60/2, AdvModel.m - AdvModel.player2PosY + AdvModel.playerSize/2, 60, AdvModel.m/2);
 	        }
 
 	}

@@ -110,6 +110,18 @@ public class AdvModel {
         return ( dist(x2,y2) < projectileSize );
     }
     
+    
+    public static boolean ifIntersectPillar( double xDim, double yDim) {
+    	if ((xDim - projectileSize/2) <= position.x && (xDim + 60 + projectileSize/2) >= position.x && (yDim <= position.y)) { //
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+    }
+    
+    
+    
     public static void setXPos() {
     	player1PosX = n/10;
     	player2PosX = n - n/10;
