@@ -67,6 +67,7 @@ public class AdvController {
                 else {
                 	AdvModel.x0 = AdvModel.player1PosX;
                 	}
+				AdvViewer.button2.setVisible(false);
 				drawProjectile();
 				
 				newTurn();
@@ -98,6 +99,7 @@ public class AdvController {
             		playSound("src/splat.wav");
             		AdvModel.addAcceleration();
             		AdvViewer.drawAceleration();
+            		AdvViewer.button2.setVisible(true);
             		stop();
             	}
             	

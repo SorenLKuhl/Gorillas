@@ -108,7 +108,10 @@ public class AdvViewer {
 			Menu fileMenu = new Menu("Menu");
 			
 			MenuItem newGame = new MenuItem("New game...");
-			newGame.setOnAction(e -> newGameButton());
+			newGame.setOnAction(e -> {
+        		newGameButton();
+        		AdvController.button3();
+			});
 			
 			fileMenu.getItems().add(newGame);
 			
