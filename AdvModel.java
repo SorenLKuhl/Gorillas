@@ -135,8 +135,8 @@ public class AdvModel {
 
 
     public static void setYPos() {
-    	player1PosY = (int) (m - (Math.random()*m)*0.5) - playerSize/2;//
-    	player2PosY = (int) (m - (Math.random()*m)*0.5) - playerSize/2;//
+    	player1PosY = (int) (m - (Math.random()*m)*0.5) - playerSize;//
+    	player2PosY = (int) (m - (Math.random()*m)*0.5) - playerSize;//
     }
     
     

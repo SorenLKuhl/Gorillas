@@ -186,7 +186,7 @@ public class AdvViewer {
 				gc.fillText("Player 2 has won the game!", AdvModel.n/2, AdvModel.m/6);
 			}
 			else {
-				gc.fillText("Player 2 has won the game!", AdvModel.n/2, AdvModel.m/6);
+				gc.fillText("Player 1 has won the game!", AdvModel.n/2, AdvModel.m/6);
 				
 			}
 		}
