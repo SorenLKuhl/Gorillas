@@ -172,10 +172,10 @@ public class AdvViewer {
 			gc.setFont(new Font(textSize));
 			gc.setFill(Color.WHITE);
 			if(AdvController.p1Turn) {
-				gc.fillText("Player 2's banana hit!", AdvModel.n/2, AdvModel.m/6);
+				gc.fillText("Player 2's banana hit! Player 1's turn to shoot!", AdvModel.n/3, AdvModel.m/6);
 			}
 			else {
-				gc.fillText("Player 1's banana hit!", AdvModel.n/2, AdvModel.m/6);
+				gc.fillText("Player 1's banana hit! Player 2's turn to shoot!", AdvModel.n/3, AdvModel.m/6);
 				
 			}
 		}

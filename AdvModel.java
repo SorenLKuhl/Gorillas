@@ -106,10 +106,6 @@ public class AdvModel {
         return Math.sqrt(Math.pow((x2-position.x),2)+Math.pow((y2-position.y),2));
     }
     
-    public static boolean collision(double x2, double y2) {//Checks if the projectile is within "hit distance" of the given point
-        return ( dist(x2,y2) < projectileSize );
-    }
-    
     public static boolean collision(double x2, double y2, int objectSize) {//Checks if the projectile is within "hit distance" of the given point
         return ( dist(x2,y2) < objectSize/2 + projectileSize/2 );
     }

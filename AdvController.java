@@ -104,8 +104,6 @@ public class AdvController {
 
             	if (checkCollision()) {
             		playSound("src/splat.wav");
-            		AdvModel.addAcceleration();
-            		AdvViewer.drawAceleration();
             		AdvViewer.button2.setVisible(true);
             		stop();
             	}
@@ -125,6 +123,8 @@ public class AdvController {
 	public static boolean checkCollision() {
 		if(AdvModel.ifIntersectBorder()) {
             AdvViewer.playerTurnText();
+            AdvModel.addAcceleration();
+    		AdvViewer.drawAceleration();
             return true;
         }
 		else if (AdvModel.ifIntersectPillar(AdvModel.player1PosX - AdvModel.n/20, AdvModel.player1PosY + AdvModel.playerSize/2) || 
@@ -135,6 +135,8 @@ public class AdvController {
 				 AdvModel.ifIntersectPillar(2 * AdvModel.n/3 - AdvModel.n/20, AdvModel.pillar3H)))
 				 {
 			AdvViewer.playerTurnText();
+			AdvModel.addAcceleration();
+    		AdvViewer.drawAceleration();
 			return true;
 		}
         if(p2Turn) {
