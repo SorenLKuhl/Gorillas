@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 
 public class AdvModel {
 	public static double angleShoot, velocityShoot;
-	public static int m, n, playerSize, x0 = 0, player1PosY , player2PosY, projectileSize, acceleration, player1PosX , player2PosX;
+	public static int m, n, playerSize, x0 = 0, player1PosY , player2PosY, projectileSize, acceleration, player1PosX , player2PosX, pillar1H, pillar2H, pillar3H; 
 	static Vector position = new Vector();
 	public static String difficulty;
 	
@@ -84,7 +84,7 @@ public class AdvModel {
         	position.y = KasteparabelY(velocity, angle, position.x) + player2PosY;
         }
         
-		if(difficulty.equals("Moderate") || difficulty.equals("Hard")) {
+		if(difficulty.equals("Hard")) {
 			position.x = (velocity+a*t)*Math.cos(angle)*t+x0;
 		}
         
@@ -112,6 +112,12 @@ public class AdvModel {
     
     public static boolean collision(double x2, double y2, int objectSize) {//Checks if the projectile is within "hit distance" of the given point
         return ( dist(x2,y2) < objectSize/2 + projectileSize/2 );
+    }
+    
+    public static void pillarHeight() {
+    	pillar1H =  (int) (m - (Math.random()*m)*0.75);
+    	pillar2H =  (int) (m - (Math.random()*m)*0.75);
+    	pillar3H =  (int) (m - (Math.random()*m)*0.75);
     }
     
     public static boolean ifIntersectPillar( double xDim, double yDim) {
@@ -150,11 +156,8 @@ public class AdvModel {
     }
     
     public static void addAcceleration() {
-    	if(difficulty.equals("Moderate")) {
+    	if(difficulty.equals("Hard")) {
     		acceleration = (int) (Math.random() * 10 - 5);
-    	}
-    	else if(difficulty.equals("Hard")) {
-    		acceleration = (int) (Math.random() * 20 - 10);
     	}
     }
     

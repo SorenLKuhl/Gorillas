@@ -53,9 +53,13 @@ public class AdvController {
 		AdvModel.setProjectileSize(AdvModel.n/70);
 		AdvModel.setPlayerSize(AdvModel.n / 25);
 		stage.setScene(AdvViewer.scene2); //sets game scene
+		if (!AdvViewer.choicebox.getValue().equals("Beginner")) {
+			AdvModel.pillarHeight();
+		}
 		AdvViewer.drawMap();
 		AdvModel.addAcceleration();
 		AdvViewer.drawAceleration();
+		
 		button2();
 	}
 	
@@ -126,7 +130,11 @@ public class AdvController {
             return true;
         }
 		else if (AdvModel.ifIntersectPillar(AdvModel.player1PosX - AdvModel.n/20, AdvModel.player1PosY + AdvModel.playerSize/2) || 
-				 AdvModel.ifIntersectPillar(AdvModel.player2PosX - AdvModel.n/20, AdvModel.player2PosY + AdvModel.playerSize/2)) {
+				 AdvModel.ifIntersectPillar(AdvModel.player2PosX - AdvModel.n/20, AdvModel.player2PosY + AdvModel.playerSize/2) || 
+				 AdvModel.ifIntersectPillar(AdvModel.n/3 - AdvModel.n/20, AdvModel.pillar1H) || 
+				 AdvModel.ifIntersectPillar(AdvModel.n/2 - AdvModel.n/20, AdvModel.pillar2H) ||
+				 AdvModel.ifIntersectPillar(2 * AdvModel.n/3 - AdvModel.n/20, AdvModel.pillar3H))
+				 {
 			AdvViewer.playerTurnText();
 			return true;
 		}
@@ -139,8 +147,10 @@ public class AdvController {
             		button3();
             	}
             	else {
+            		InitializeGameInterface(AdvGorillas.primaryStage);
             		AdvViewer.hitText();
             	}
+            	
             	return true;
             }
         }
@@ -153,6 +163,7 @@ public class AdvController {
             		button3();
             	}
             	else {
+            		InitializeGameInterface(AdvGorillas.primaryStage);
             		AdvViewer.hitText();
             	}
             	return true;

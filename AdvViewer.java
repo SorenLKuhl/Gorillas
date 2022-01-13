@@ -31,9 +31,7 @@ import javafx.scene.canvas.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
-
-
-
+import javafx.scene.text.TextAlignment;
 import javafx.animation.*;
 
 public class AdvViewer {
@@ -69,7 +67,7 @@ public class AdvViewer {
 			mValue.setPromptText("Height"); // promptText for height
 			choicebox.getItems().addAll("Beginner","Moderate", "Hard");
 			choicebox.setValue("Difficulty");
-			label1 = new Label("Enter width and height of the game below"); //description
+			label1 = new Label("Enter width and height of the game below (min. 500)"); //description
 			button = new Button();
 			button.setText("Continue to game"); //button for applying width and height
 			
@@ -196,13 +194,20 @@ public class AdvViewer {
 		public static void scoreBoard() {
 			gc.setFont(new Font(textSize));
 			gc.setFill(Color.BLACK);
+			gc.setTextAlign(TextAlignment.CENTER);
 			gc.fillText(player1score + " | " +  player2score, AdvModel.n/2, AdvModel.m/16);
+			gc.setTextAlign(TextAlignment.LEFT);
 		}
 		
 		public static void drawMap() {
 	        background();
 	        pillar(AdvModel.player1PosX - AdvModel.n/20, AdvModel.player1PosY + AdvModel.playerSize/2);
 	        pillar(AdvModel.player2PosX - AdvModel.n/20, AdvModel.player2PosY + AdvModel.playerSize/2);
+	        if (!choicebox.getValue().equals("Beginner")) {
+	        	pillar(AdvModel.n/3 - AdvModel.n/20, AdvModel.pillar1H);
+	        	pillar(AdvModel.n/2 - AdvModel.n/20, AdvModel.pillar2H);
+	        	pillar(2 * AdvModel.n/3 - AdvModel.n/20, AdvModel.pillar3H);
+	        }
 	        players();
 	        scoreBoard();
 	        
@@ -243,7 +248,7 @@ public class AdvViewer {
 	            SnapshotParameters params = new SnapshotParameters();
 	            params.setFill(Color.TRANSPARENT);
 	            Image rotatedImage = iv.snapshot(params, null);
-	            gc.drawImage(rotatedImage, x, y, AdvModel.n/10, AdvModel.m/2);
+	            gc.drawImage(rotatedImage, x, y, AdvModel.n/10, 3 * AdvModel.m/4);
 	        }
 		 
 		 public static void newGameButton() {
