@@ -49,13 +49,14 @@ public class AdvViewer {
 		static Canvas canvas;
 		static GraphicsContext gc;		
 		static Image projectile = new Image(ClassLoader.getSystemResource("banana.png").toString());
-        static Image background = new Image(ClassLoader.getSystemResource("background.jpg").toString());
+        static Image background = new Image(ClassLoader.getSystemResource("background.png").toString());
         static Image player1 = new Image(ClassLoader.getSystemResource("player1.png").toString());
         static Image player2 = new Image(ClassLoader.getSystemResource("player2.png").toString());
         static ImageView iv = new ImageView (new Image("log.png"));
         static ChoiceBox<String> choicebox = new ChoiceBox<>();
-		static int player1score = 0, player2score = 0;
+		static int player1score = 0, player2score = 0, textSize;
 		static MenuBar menuBar;
+		
 		
 
 
@@ -88,6 +89,7 @@ public class AdvViewer {
 		public static void angleAndVelocityInterface() {
 			AdvModel.n = Integer.parseInt(nValue.getText());
 			AdvModel.m = Integer.parseInt(mValue.getText());
+			textSize = AdvModel.n/30;
 			menu();
 			gameLayout();
 		}
@@ -112,7 +114,9 @@ public class AdvViewer {
 			vbox.setPadding(new Insets(20,20,20,20));
 			
 			angleText = new Label("Banana angle: ");
+			angleText.setTextFill(Color.WHITE);
 			velocityText = new Label("Banana velocity: ");
+			velocityText.setTextFill(Color.WHITE);
 			
 			vbox.getChildren().addAll(menuBar, angleText, angle, velocityText, velocity, button2);
 
@@ -155,8 +159,8 @@ public class AdvViewer {
         }
 		
 		public static void playerTurnText() {
-			gc.setFont(new Font(30));
-			gc.setFill(Color.rgb(5,184,255));
+			gc.setFont(new Font(textSize));
+			gc.setFill(Color.RED);
 			
 			if(AdvController.p1Turn) {
 				gc.fillText("Player 2 missed! Player 1's turn to shoot!", AdvModel.n/3, AdvModel.m/6);
@@ -167,8 +171,8 @@ public class AdvViewer {
 			}
 		}
 		public static void hitText() {
-			gc.setFont(new Font(30));
-			gc.setFill(Color.GREEN);
+			gc.setFont(new Font(textSize));
+			gc.setFill(Color.WHITE);
 			if(AdvController.p1Turn) {
 				gc.fillText("Player 2's banana hit!", AdvModel.n/2, AdvModel.m/6);
 			}
@@ -178,8 +182,8 @@ public class AdvViewer {
 			}
 		}
 		public static void winText(){
-			gc.setFont(new Font(30));
-			gc.setFill(Color.GREEN);
+			gc.setFont(new Font(textSize));
+			gc.setFill(Color.WHITE);
 			if(AdvController.p1Turn) {
 				gc.fillText("Player 2 has won the game!", AdvModel.n/2, AdvModel.m/6);
 			}
@@ -190,21 +194,21 @@ public class AdvViewer {
 		}
 		
 		public static void scoreBoard() {
-			gc.setFont(new Font(30));
+			gc.setFont(new Font(textSize));
 			gc.setFill(Color.BLACK);
 			gc.fillText(player1score + " | " +  player2score, AdvModel.n/2, AdvModel.m/16);
 		}
 		
 		public static void drawMap() {
 	        background();
-	        playerPillar(AdvModel.player1PosX - AdvModel.n/20, AdvModel.player1PosY + AdvModel.playerSize/2);
-	        playerPillar(AdvModel.player2PosX - AdvModel.n/20, AdvModel.player2PosY + AdvModel.playerSize/2);
+	        pillar(AdvModel.player1PosX - AdvModel.n/20, AdvModel.player1PosY + AdvModel.playerSize/2);
+	        pillar(AdvModel.player2PosX - AdvModel.n/20, AdvModel.player2PosY + AdvModel.playerSize/2);
 	        players();
 	        scoreBoard();
 	        
 		}
 		public static void drawAceleration() {
-			gc.setFont(new Font(30));
+			gc.setFont(new Font(textSize));
 			gc.setFill(Color.rgb(5,184,255));
 			gc.fillText("Wind: " + AdvModel.acceleration,AdvModel.n*3/4, AdvModel.m/16);
 		}
@@ -234,7 +238,7 @@ public class AdvViewer {
 			}
 		}
 		
-		 public static void playerPillar(int x, int y) {
+		 public static void pillar(int x, int y) {
 	            iv.setRotate(90);
 	            SnapshotParameters params = new SnapshotParameters();
 	            params.setFill(Color.TRANSPARENT);
