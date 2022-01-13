@@ -26,12 +26,12 @@ public class AdvModel {
 		}
 	}
 	
-	public static boolean isPosInt(TextField in) {		//Checks if input is a positive integer
-		if (isInt(in) && 0 < Integer.parseInt(in.getText())) {
+	public static boolean isValidInt(TextField in) {		//Checks if input is a positive integer
+		if (isInt(in) && 500 <= Integer.parseInt(in.getText())) {
 			return true;
 		}
 		else {
-			System.out.println("Error: " + in.getText() + " is not a positive integer");
+			System.out.println("Error: " + in.getText() + " is not a valid integer");
 			return false;
 		}
 	}

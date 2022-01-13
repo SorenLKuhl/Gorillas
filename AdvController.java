@@ -35,7 +35,7 @@ public class AdvController {
 	
 	public static void button1(Stage stage) {
 		AdvViewer.button.setOnAction(e -> { //sets the dimensions of the game and checks if the values are valid
-			if (AdvModel.isPosInt(AdvViewer.nValue) && AdvModel.isPosInt(AdvViewer.mValue) && AdvModel.checkChoice()) {
+			if (AdvModel.isValidInt(AdvViewer.nValue) && AdvModel.isValidInt(AdvViewer.mValue) && AdvModel.checkChoice()) {
 				AdvModel.difficulty = AdvViewer.choicebox.getValue();
 				InitializeGameInterface(stage);
 			}

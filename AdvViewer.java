@@ -128,7 +128,7 @@ public class AdvViewer {
 		}
 		
 		public static void menu() {
-			Menu fileMenu = new Menu("Menu");
+			Menu fileMenu = new Menu("_Menu");
 			
 			MenuItem newGame = new MenuItem("New game...");
 			newGame.setOnAction(e -> {
@@ -214,7 +214,7 @@ public class AdvViewer {
 		}
 		
 		public static void textFieldRed1(TextField tf) {
-			if(!AdvModel.isPosInt(tf)) {
+			if(!AdvModel.isValidInt(tf)) {
 				tf.setStyle("-fx-text-box-border: red;");
 			}
 			else {
