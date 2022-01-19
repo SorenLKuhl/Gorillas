@@ -26,7 +26,7 @@ public class AdvModel {
 	}
 	
 	public static boolean isValidInt(TextField in) {		//Checks if input is a positive integer over 500
-		if (isInt(in) && 500 <= Integer.parseInt(in.getText())) {
+		if (isInt(in) && 500 <= Integer.parseInt(in.getText()) && 1000 >= Integer.parseInt(in.getText())) {
 			return true;
 		}
 		else {

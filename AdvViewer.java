@@ -57,7 +57,7 @@ public class AdvViewer {
 			choicebox.getItems().addAll("Beginner","Moderate", "Hard");		//choicebox containing the difficulties
 			choicebox.setValue("Difficulty");
 			
-			label1 = new Label("Enter width and height of the game below (min. 500)"); //Prompts the user to enter values
+			label1 = new Label("Enter width and height of the game below (min. 500 & max. 1000)"); //Prompts the user to enter values
 			
 			button = new Button();		//button for applying width and height
 			button.setText("Continue to game"); 
