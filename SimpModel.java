@@ -12,7 +12,7 @@ public class SimpModel {
 	public static boolean isValidAngle(TextField in) {		//Checks if the userinput is a valid angle
 		try {
 			Double.parseDouble(in.getText());		//Checks if input is a double between 0 and 90
-			if (Double.parseDouble(in.getText()) >= 0 && Double.parseDouble(in.getText()) <=90) {
+			if (Double.parseDouble(in.getText()) >= 0 && Double.parseDouble(in.getText()) <90) {
 				return true;
 			}
 			else {
