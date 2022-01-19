@@ -1,7 +1,6 @@
 package Gorillas;
 
-import java.awt.Point;
-import javafx.scene.control.ChoiceBox;
+
 import javafx.scene.control.TextField;
 
 public class AdvModel {
