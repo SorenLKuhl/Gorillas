@@ -69,7 +69,6 @@ public class AdvViewer {
 			scene1 = new Scene(layout1, 400, 250); //initialization scene with the predefined layout
 		}
 		
-		
 		public static void angleAndVelocityInterface() {		//Initializes the second window containing the game
 			AdvModel.n = Integer.parseInt(nValue.getText());		//Values put in textfields for width and height gets defined
 			AdvModel.m = Integer.parseInt(mValue.getText());

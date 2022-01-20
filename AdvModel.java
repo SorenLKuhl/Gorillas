@@ -159,6 +159,9 @@ public class AdvModel {
     	if(difficulty.equals("Hard")) {
     		acceleration = (int) (Math.random() * 10 - 5);
     	}
+    	else {
+    		acceleration = 0;
+    	}
     }
     
     public static void setPlayerSize(int size) {		//Sets the players' size to a given value

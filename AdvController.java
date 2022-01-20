@@ -86,7 +86,7 @@ public class AdvController {
             	t += 0.10;		//t is updated every tick which in turn moves the projectile
 
             	if (checkCollision()) {		//Checks collision every tick and plays a sound, shows the button and stops the animation when true
-            		playSound("src/splat.wav");
+            		playSound("splat.wav");
             		AdvViewer.button2.setVisible(true);
             		stop();
             	}
@@ -154,7 +154,7 @@ public class AdvController {
 	
     public static void playSound(String path) {		//Method used to play a sound defined by its file-path
         try {
-            AudioInputStream input = AudioSystem.getAudioInputStream(new File(path).getAbsoluteFile());
+            AudioInputStream input = AudioSystem.getAudioInputStream(ClassLoader.getSystemResource(path));
             Clip clip = AudioSystem.getClip();
             clip.open(input);
             clip.start();
